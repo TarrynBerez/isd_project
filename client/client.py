@@ -10,7 +10,7 @@ class Client:
     """
     def __init__(self, client_number : int, first_name : str, last_name : str, email_address : str):
         #Client Number
-        if isinstance(int,client_number):
+        if isinstance(client_number, int):
             self.__client_number = client_number
         else:
             raise ValueError("Client number must be an int.")
@@ -30,9 +30,9 @@ class Client:
         #Email Address
         try:
             validate_email(email_address, check_deliverability = False)
-        except:
+        except EmailNotValidError:
             email_address = "email@pixell-river.com"
-        self.__email_adress = email_address
+        self.__email_address = email_address
 
     
     @property
@@ -65,11 +65,11 @@ class Client:
         Docstring!
 
         """
-        return self.__email_adress
+        return self.__email_address
 
     def __str__(self) -> str:
         """
         Docstring!
 
         """
-        return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_adress}"
+        return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_address}"
