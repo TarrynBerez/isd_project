@@ -28,6 +28,7 @@ class BankAccount:
             raise ValueError("Balance must be a float type.")
         
 
+
     
     @property
     def account_number(self) -> int:
@@ -52,3 +53,53 @@ class BankAccount:
         """
         return self.__balance
     
+
+
+
+    def update_balance(self, amount : float) -> float:
+        """
+        Docstring!
+        """
+        try:
+            self.__balance += float(amount)
+            return self.__balance
+        except ValueError:
+            raise ValueError("Updated balance must be a float.")
+        
+
+    def deposit(self, amount):
+        """
+        Docstring!
+        """
+        if amount <= 0:
+            raise ValueError(f"Deposit amount: {amount} must be positive")
+        
+        try:
+            amount = float(amount)
+        except ValueError:
+            raise ValueError(f"Deposit amount: {amount} must be numeric")
+
+        self.update_balance(amount)
+        
+        
+    def withdrawal(self, amount):
+        """
+        Docstring!
+        """
+        if amount <= 0:
+            raise ValueError(f"Withdawal amount: {amount} must be positive.")
+        
+        try:
+            amount = float(amount)
+        except:
+            raise ValueError(f"Withdrawal amount: {amount} must be numeric.")
+        
+        self.update_balance(-amount)
+
+
+
+        
+    def __str__(self):
+        """
+        """
+        return f"Account Number: {self.__account_number} Balance: ${self.__balance:,.2f}"
