@@ -19,12 +19,12 @@ def main():
 
     # 1. Code a statement which creates a valid instance of the Client class.
     # Use your own unique valid values for the inputs to the class.
-
+    client = Client(1111,"Tarryn", "Bereznycky", "tarryn@gmail.com")
 
 
 
     # 2. Declare a BankAccount object with an initial value of None.
-
+    bank_account = None
  
 
     # 3. Using the bank_account object declared in step 2, code a statement 

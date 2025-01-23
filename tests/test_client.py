@@ -63,6 +63,7 @@ class TestClient(unittest.TestCase):
     def test_email_address_accessor_valid_returns_email_adress_attribute(self):
         self.assertEqual(self.client.email_address, "email@gmail.com")
 
+
     def test_str_valid_returns_str_method(self):
         expected = "Bereznycky, Tarryn [1111] - email@gmail.com"
         self.assertEqual(expected, str(self.client))
