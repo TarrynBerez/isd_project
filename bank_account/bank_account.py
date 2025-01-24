@@ -4,10 +4,12 @@ __version__ = "1.0.0"
 class BankAccount:
     """
     Docstring!
+
     """
     def __init__(self, account_number : int, client_number : int, balance : float):
         """
         Docstring!
+
         """
         #Account Number 
         if isinstance(account_number, int):
@@ -34,6 +36,7 @@ class BankAccount:
     def account_number(self) -> int:
         """
         Docstring!
+
         """
         return self.__account_number
     
@@ -42,6 +45,7 @@ class BankAccount:
     def client_number(self) -> int:
         """
         Docstring!
+
         """
         return self.__client_number
     
@@ -50,6 +54,7 @@ class BankAccount:
     def balance(self) -> float:
         """
         Docstring!
+
         """
         return self.__balance
     
@@ -58,6 +63,7 @@ class BankAccount:
     def update_balance(self, amount : float) -> float:
         """
         Docstring!
+        
         """
         try:
             self.__balance += float(amount)
@@ -72,38 +78,40 @@ class BankAccount:
     def deposit(self, amount : float):
         """
         Docstring!
+
         """
-        if amount <= 0:
-            raise ValueError(f"Deposit amount: {amount:,.2f} must be positive")
-        
         try:
             amount = float(amount)
         except ValueError:
-            raise ValueError(f"Deposit amount: {amount:,.2f} must be numeric")
-
+            raise ValueError(f"Deposit amount: {amount} must be numeric")
+            
+        if amount <= 0:
+            raise ValueError(f"Deposit amount: {amount:,.2f} must be positive")
+        
         self.update_balance(amount)
         
         
     def withdraw(self, amount : float):
         """
         Docstring!
+
         """
+        try:
+            amount = float(amount)
+        except ValueError:
+            raise ValueError(f"withdraw amount: {amount} must be numeric.")
+
         if amount <= 0: 
             raise ValueError(f"withdraw amount: ${amount:,.2f} must be positive.")
         elif amount > self.__balance:
             raise ValueError(f"Withdraw amount: ${amount:,.2f} must not exeed the account balance: {self.__balance:,.2f}")
         
-        try:
-            amount = float(amount)
-        except ValueError:
-            raise ValueError(f"withdraw amount: ${amount:,.2f} must be numeric.")
-        
         self.update_balance(-amount)
-
 
 
     def __str__(self):
         """
         Docstring!
+        
         """
         return f"Account Number: {self.__account_number} Balance: ${self.__balance:,.2f}"
