@@ -3,12 +3,21 @@ __version__ = "1.0.0"
 
 class BankAccount:
     """
-    Docstring!
+    BankData class: Maintains BankAccount data
 
     """
     def __init__(self, account_number : int, client_number : int, balance : float):
         """
-        Docstring!
+        Initializes the class attribute with the argument values
+
+        Args:
+            account_number (int): Value representing bank account number.
+            client_number (int): Value representing client number.
+            balance (float): value representing current account balance.
+
+        Raises:
+            ValueError: If account number is not numeric or client number
+                is not numeric.
 
         """
         #Account Number 
@@ -35,7 +44,11 @@ class BankAccount:
     @property
     def account_number(self) -> int:
         """
-        Docstring!
+        Accessor for the account_number attribute.
+
+        Returns:
+            self.__account_number (int): value representing
+                account_number.
 
         """
         return self.__account_number
@@ -44,7 +57,11 @@ class BankAccount:
     @property 
     def client_number(self) -> int:
         """
-        Docstring!
+        Accessor for the client_number number attribute.
+
+        Returns:
+            self.__client_number (int): Value representing
+                the client number.
 
         """
         return self.__client_number
@@ -53,7 +70,12 @@ class BankAccount:
     @property
     def balance(self) -> float:
         """
-        Docstring!
+        Accessor for the balance attribute.
+
+        Returns:
+            self.__balance (float): value representing the
+                account balance.
+
 
         """
         return self.__balance
@@ -62,38 +84,51 @@ class BankAccount:
 
     def update_balance(self, amount : float) -> float:
         """
-        Docstring!
+        Method that updates the current balance of the account.
+
+        Args:
+            amount (float): Value representing the updated balance.
         
         """
         try:
             self.__balance += float(amount)
-            #return self.__balance
         except ValueError:
             pass
-            # self.__balance = self.__balance
-            # return self.__balance
-            #raise ValueError("Updated balance must be a float.")
-        
 
-    def deposit(self, amount : float):
+
+    def deposit(self, amount : float) -> float:
         """
-        Docstring!
+        Method that deposits money to account.
+
+        args:
+            Amount: The amount of money that deposits into balance.
+
+        Raises: 
+            ValueError: If deposit amount is not numeric or is not positive.
 
         """
         try:
             amount = float(amount)
         except ValueError:
-            raise ValueError(f"Deposit amount: {amount} must be numeric")
+            raise ValueError(f"Deposit amount: {amount} must be numeric.")
             
         if amount <= 0:
-            raise ValueError(f"Deposit amount: {amount:,.2f} must be positive")
+            raise ValueError(f"Deposit amount: {amount:,.2f} must be positive.")
         
         self.update_balance(amount)
         
         
-    def withdraw(self, amount : float):
+    def withdraw(self, amount : float) -> float:
         """
-        Docstring!
+        Method that withdraws money from account balance.
+
+        Args:
+            amount (float): The amount of money to withdraw from
+                balance.
+            
+        Raises:
+            ValueError: If withdraw amount is negative, not numeric, 
+                exeeds the balance.
 
         """
         try:
@@ -104,14 +139,14 @@ class BankAccount:
         if amount <= 0: 
             raise ValueError(f"withdraw amount: ${amount:,.2f} must be positive.")
         elif amount > self.__balance:
-            raise ValueError(f"Withdraw amount: ${amount:,.2f} must not exeed the account balance: {self.__balance:,.2f}")
+            raise ValueError(f"Withdraw amount: ${amount:,.2f} must not exeed the account balance: {self.__balance:,.2f}.")
         
         self.update_balance(-amount)
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
-        Docstring!
-        
+        A formatted string representation of the class instance
+
         """
-        return f"Account Number: {self.__account_number} Balance: ${self.__balance:,.2f}"
+        return f"Account Number: {self.__account_number} Balance: ${self.__balance:,.2f}."

@@ -17,7 +17,7 @@ class Client:
             client_number (int): A value representing the client 
                 number.
             first_name (str): string containing the clients first name.
-            last_name (str); string containing the clients last name.
+            last_name (str): string containing the clients last name.
             email_address (str): string containing email address.
 
         Raises:
@@ -42,7 +42,7 @@ class Client:
         if len(last_name.strip()) > 0:
             self.__last_name = last_name
         else:
-            raise ValueError("Last name cannot be blank")
+            raise ValueError("Last name cannot be blank.")
 
         #Email Address
         try:
@@ -111,4 +111,4 @@ class Client:
             instance.
 
         """
-        return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_address}"
+        return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_address}."
