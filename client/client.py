@@ -25,6 +25,7 @@ class Client:
                 or last_name is blank.
             EmailNotValidError:
                 if email is not valid.
+                
         """
         #Client Number
         if isinstance(client_number, int):

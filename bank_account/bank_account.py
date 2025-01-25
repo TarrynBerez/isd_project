@@ -76,7 +76,6 @@ class BankAccount:
             self.__balance (float): value representing the
                 account balance.
 
-
         """
         return self.__balance
     
@@ -100,7 +99,7 @@ class BankAccount:
         """
         Method that deposits money to account.
 
-        args:
+        Args:
             Amount: The amount of money that deposits into balance.
 
         Raises: 
@@ -139,7 +138,7 @@ class BankAccount:
         if amount <= 0: 
             raise ValueError(f"withdraw amount: ${amount:,.2f} must be positive.")
         elif amount > self.__balance:
-            raise ValueError(f"Withdraw amount: ${amount:,.2f} must not exeed the account balance: {self.__balance:,.2f}.")
+            raise ValueError(f"Withdraw amount: ${amount:,.2f} must not exeed the account balance: ${self.__balance:,.2f}.")
         
         self.update_balance(-amount)
 
