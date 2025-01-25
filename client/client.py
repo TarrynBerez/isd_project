@@ -5,7 +5,7 @@ from email_validator import validate_email, EmailNotValidError
 
 class Client:
     """
-    Client Class: Maintains Client data
+    Client Class: Maintains Client data.
 
     """
     def __init__(self, client_number : int, first_name : str, 
@@ -112,4 +112,5 @@ class Client:
             instance.
 
         """
-        return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_address}"
+        return (f"{self.__last_name}, {self.__first_name} "
+                f"[{self.__client_number}] - {self.__email_address}")

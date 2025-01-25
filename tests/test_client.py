@@ -11,7 +11,8 @@ from client.client import Client
 class TestClient(unittest.TestCase):
 
     def setUp(self):
-        self.client = Client(1111, "Tarryn", "Bereznycky", "email@gmail.com")
+        self.client = Client(1111, "Tarryn", 
+                             "Bereznycky", "email@gmail.com")
 
 
     #Init Tests
@@ -23,7 +24,8 @@ class TestClient(unittest.TestCase):
         self.assertEqual(1111, client._Client__client_number)
         self.assertEqual("Tarryn", client._Client__first_name)
         self.assertEqual("Bereznycky", client._Client__last_name)
-        self.assertEqual("email@gmail.com", client._Client__email_address)
+        self.assertEqual("email@gmail.com",
+                          client._Client__email_address)
 
     
     def test_init_invalid_client_number_raises_value_error(self):
@@ -42,7 +44,8 @@ class TestClient(unittest.TestCase):
 
 
     def test_init_invalid_email_sets_default_email(self):
-        expected = Client(1111, "Tarryn", "Bereznycky", "email@pixell-river.com")
+        expected = Client(1111, "Tarryn", "Bereznycky", 
+                          "email@pixell-river.com")
         actual = Client(1111, "Tarryn", "Bereznycky", "22")
         self.assertEqual(expected.email_address, actual.email_address)
 

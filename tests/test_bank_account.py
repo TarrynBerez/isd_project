@@ -97,5 +97,5 @@ class TestBankAccount(unittest.TestCase):
 
     
     def test_str_valid_returns_str_method(self):
-        expected = f"Account Number: 1111 Balance: $40,000.00."
+        expected = f"Account Number: 1111 Balance: $40,000.00"
         self.assertEqual(expected, str(self.bankAccount))
