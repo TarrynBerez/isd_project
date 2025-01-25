@@ -8,4 +8,5 @@ Tarryn Bereznycky
 Assignment 01: isd_project. Building classes to be used in systems that will incorperate encapsulation.
 
 ## Encapsulation
-[use this section to explain how Encapsulation was achieved in the BankAccount class.]
+In the bank account class encapsulation was achived by making the account_number, client_number, and balance so they are
+only accessible in the class. Also methods like update_balance, deposit and withdraw were added to interact with and update the balance.
