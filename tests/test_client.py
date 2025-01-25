@@ -65,5 +65,5 @@ class TestClient(unittest.TestCase):
 
 
     def test_str_valid_returns_str_method(self):
-        expected = "Bereznycky, Tarryn [1111] - email@gmail.com."
+        expected = "Bereznycky, Tarryn [1111] - email@gmail.com"
         self.assertEqual(expected, str(self.client))

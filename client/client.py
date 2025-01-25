@@ -112,4 +112,4 @@ class Client:
             instance.
 
         """
-        return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_address}."
+        return f"{self.__last_name}, {self.__first_name} [{self.__client_number}] - {self.__email_address}"
