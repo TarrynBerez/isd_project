@@ -147,7 +147,7 @@ class BankAccount:
         elif amount > self.__balance:
             raise ValueError(f"Withdraw amount: ${amount:,.2f} must " 
                              f"not exceed the account balance: "
-                             f"${self.__balance:,.2f}.")
+                             f"${self.__balance:,.2f}")
         
         self.update_balance(-amount)
 
