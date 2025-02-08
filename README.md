@@ -10,3 +10,7 @@ Assignment 01: isd_project. Building classes to be used in systems that will inc
 ## Encapsulation
 In the bank account class encapsulation was achived by making the account_number, client_number, and balance so they are
 only accessible in the class. Also methods like update_balance, deposit and withdraw were added to interact with and update the balance.
+
+## Assignment
+Assignment 1:  Details about the previous assignment.
+Assignment [assignment number]: [Indicate the name and description of the current assignment]
