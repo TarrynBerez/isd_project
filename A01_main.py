@@ -21,8 +21,11 @@ def main():
     # 1. Code a statement which creates a valid instance of the Client class.
     # Use your own unique valid values for the inputs to the class.
 
-    client = Client(1111,"Tarryn", "Bereznycky", "tarryn@gmail.com")
-
+    try:
+        client = Client(1111,"Tarryn", "Bereznycky", "tarryn@gmail.com")
+    except ValueError as e:
+        print(e)
+        
     # 2. Declare a BankAccount object with an initial value of None.
 
     bank_account = None
@@ -33,8 +36,11 @@ def main():
     # Use the client_number used to create the Client object in step 1 for the 
     # BankAccount's client_number. 
     # Use a floating point value for the balance. 
+    try:
 
-    bank_account = BankAccount(2222, 1111, 40000.55)
+        bank_account = BankAccount(2222, 1111, 40000.55)
+    except ValueError as e:
+        print(e)
 
     # 4. Code a statement which creates an instance of the BankAccount class.
     # Use any integer value for the BankAccount number.
@@ -42,13 +48,19 @@ def main():
     # BankAccount's client_number. 
     # Use an INVALID value (non-float) for the balance. 
 
-    invalid_bank_account = BankAccount(2222, 1111, "Balance")
-
+    try:    
+        invalid_bank_account = BankAccount(2222, 1111, "Balance")
+    except ValueError as e:
+        print(e)
+        
     # 5. Code a statement which prints the Client instance created in step 1. 
     # Code a statement which prints the BankAccount instance created in step 3.
 
-    print(str(client))
-    print(str(bank_account))
+    try:
+        print(str(client))
+        print(str(bank_account))
+    except ValueError as e:
+        print(e)
 
     # 6. Attempt to deposit a non-numeric value into the BankAccount create in step 3. 
 
@@ -65,8 +77,10 @@ def main():
         print(e)
 
     # 8. Attempt to withdraw a valid amount of your choice from the BankAccount create in step 3. 
-
+    try:
         bank_account.withdraw(5000)
+    except ValueError as e:
+        print(e)
 
     # 9. Attempt to withdraw a non-numeric value from the BankAccount create in step 3. 
 

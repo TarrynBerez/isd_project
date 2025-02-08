@@ -82,7 +82,7 @@ class BankAccount:
     
 
 
-    def update_balance(self, amount : float) -> float:
+    def update_balance(self, amount : float):
         """
         Method that updates the current balance of the account.
 
@@ -96,7 +96,7 @@ class BankAccount:
             pass
 
 
-    def deposit(self, amount : float) -> float:
+    def deposit(self, amount : float):
         """
         Method that deposits money to account.
 
@@ -122,7 +122,7 @@ class BankAccount:
         self.update_balance(amount)
         
         
-    def withdraw(self, amount : float) -> float:
+    def withdraw(self, amount : float):
         """
         Method that withdraws money from account balance.
 
@@ -154,8 +154,10 @@ class BankAccount:
 
     def __str__(self) -> str:
         """
-        A formatted string representation of the class instance
+        Returns a string representatio of the account
 
+        Returns:
+            str: A formatted strong displaying the account number and balance
         """
         return (f"Account Number: {self.__account_number} "
                 f"Balance: ${self.__balance:,.2f}")
