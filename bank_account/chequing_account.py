@@ -29,7 +29,7 @@ class ChequingAccount(BankAccount):
         #overdraft rate 
         try:
             self.__overdraft_rate = float(overdraft_rate)
-        except:
+        except ValueError:
             self.__overdraft_rate = 0.05
 
     
@@ -39,9 +39,9 @@ class ChequingAccount(BankAccount):
 
         """
         if self._BankAccount__balance >= self.__overdraft_limit:
-            return BankAccount.BASE_SERVICE_CHARGE
+            return self.BASE_SERVICE_CHARGE
         elif self._BankAccount__balance < self.__overdraft_limit:
-            return BankAccount.BASE_SERVICE_CHARGE + (self.__overdraft_limit - self._BankAccount__balance) * self.__overdraft_rate
+            return self.BASE_SERVICE_CHARGE + (self.__overdraft_limit - self._BankAccount__balance) * self.__overdraft_rate
 
 
     def __str__(self):
@@ -49,5 +49,5 @@ class ChequingAccount(BankAccount):
         Docstring!
 
         """
-        return (f"Account Number: {self._BankAccount__account_number} Balance: {self._BankAccount__balance:,.2f}\n"
+        return (f"Account Number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
                 f"Overdraft Limit: ${self.__overdraft_limit:,.2f} Overdraft Rate: {self.__overdraft_rate}% Account Type: Chequing")

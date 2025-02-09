@@ -74,6 +74,6 @@ class TestChequingAccount(unittest.TestCase):
         chequing_account = ChequingAccount(1001, 1111, 15000, expected_date,
                                            1000, 0.10)
 
-        expected_result = (f"Account Number: 1001 Balance: 15,000.00\n"
+        expected_result = (f"Account Number: 1001 Balance: $15,000.00\n"
         f"Overdraft Limit: $1,000.00 Overdraft Rate: 0.1% Account Type: Chequing")
         self.assertEqual(str(chequing_account), expected_result)
