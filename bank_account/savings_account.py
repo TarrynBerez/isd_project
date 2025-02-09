@@ -22,20 +22,29 @@ class SavingsAccount(BankAccount):
         except ValueError:
             self.__minimum_balance = 50
 
+
         #Service Charge Premium
         self.SERVICE_CHARGE_PREMIUM = 2.00
 
 
 
     def get_service_charges(self):
-        if self.__balance >= self.__minimum_balance:
+        """
+        Docstring!
+        
+        """
+        if self._BankAccount__balance >= self.__minimum_balance:
             return self.BASE_SERVICE_CHARGE
-        elif self.__balance < self.__minimum_balance:
-            self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
+        elif self._BankAccount__balance < self.__minimum_balance:
+            return self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
 
     
     def __str__(self):
-        return (f"Account Number: {self.__account_number} Balance: {self.__balance}\n"
-                f"Minimum Balance: {self.__minimum_balance} Account Type: Savings")
+        """
+        Docstring
+
+        """
+        return (f"Account Number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
+                f"Minimum Balance: ${self.__minimum_balance:,.2f} Account Type: Savings")
     
 

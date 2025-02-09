@@ -6,7 +6,7 @@ from datetime import date
 
 class ChequingAccount(BankAccount):
     """
-    Docstring
+    Docstring!
 
     """
     def __init__(self, account_number : int, client_number : int,

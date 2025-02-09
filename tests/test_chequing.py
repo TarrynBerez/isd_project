@@ -9,7 +9,7 @@ from datetime import date
 
 class TestChequingAccount(unittest.TestCase):
     def test_init_valid_input_attributes(self):
-        expected_date = date(2025, 2, 8)
+        expected_date = date(2025, 2, 9)
         chequing_account = ChequingAccount(1001, 1111, 11000,
                                             date, 1000, 0.10)
         self.assertEqual(1001, chequing_account._BankAccount__account_number)
