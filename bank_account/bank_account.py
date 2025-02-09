@@ -9,6 +9,9 @@ class BankAccount(ABC):
     BankData class: Maintains BankAccount data.
 
     """
+    #Base Service Charge
+    BASE_SERVICE_CHARGE = 0.50
+    
     def __init__(self, account_number : int, client_number : int, 
                  balance : float, date_created : date):
         """
@@ -49,8 +52,6 @@ class BankAccount(ABC):
         else:
             self._date_created = date.today()
         
-        #Base Service Charge
-        BASE_SERVICE_CHARGE = 0.50
 
     
     @property
