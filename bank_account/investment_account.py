@@ -2,7 +2,7 @@ __author__ = "author name"
 __version__ = "1.0.0"
 
 from bank_account.bank_account import BankAccount
-from datetime import date, timedelta
+from datetime import date, timedelta 
 
 class InvestmentAccount(BankAccount):
     """
@@ -28,7 +28,7 @@ class InvestmentAccount(BankAccount):
 
 
     def get_service_charges(self):
-        if self.TEN_YEARS_AGO == date.today():
+        if self._date_created < self.TEN_YEARS_AGO:
             return self.BASE_SERVICE_CHARGE
         else:
             return self.BASE_SERVICE_CHARGE + self.__management_fee
@@ -40,6 +40,11 @@ class InvestmentAccount(BankAccount):
         Docstring!
 
         """
-        return (f"Account_number: {self.__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
-                f"Date Created: {self._date_created} Management Fee: {self.__management_fee} Account Type: Investment")
+        if self._date_created < self.TEN_YEARS_AGO:
+            return (f"Account_number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
+                    f"Date Created: {self._date_created} Management Fee: ${self.__management_fee:,.2f} Account Type: Investment")
+        else:
+            return (f"Account_number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
+                    f"Date Created: {self._date_created} Management Fee: Waived Account Type: Investment")
+
     

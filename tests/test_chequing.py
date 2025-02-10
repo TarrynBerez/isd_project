@@ -1,6 +1,7 @@
 """
 Description: Unit tests for the CheuqingAccount class.
-Author: Tarryn Bereznycly
+Author: Tarryn Bereznycky
+
 """
 
 import unittest
@@ -8,6 +9,7 @@ from bank_account.chequing_account import ChequingAccount
 from datetime import date
 
 class TestChequingAccount(unittest.TestCase):
+    
     def test_init_valid_input_attributes(self):
         expected_date = date(2025, 2, 9)
         chequing_account = ChequingAccount(1001, 1111, 11000,

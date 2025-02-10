@@ -6,6 +6,10 @@ from datetime import date
 
 
 class SavingsAccount(BankAccount):
+    """
+    Docstring!
+    
+    """
      
     def __init__(self, account_number : int, client_number : int, 
                   balance : float, date_created : date, 
