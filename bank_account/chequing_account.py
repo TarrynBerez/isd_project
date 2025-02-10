@@ -6,14 +6,22 @@ from datetime import date
 
 class ChequingAccount(BankAccount):
     """
-    Docstring!
+    ChequingAccount Class: Maintains savings account data.
 
     """
     def __init__(self, account_number : int, client_number : int,
                  balance : float, date_created : date, overdraft_limit : float,
                  overdraft_rate : float):
         """
-        Docstring!
+        Initializes the Chequing account class with argument values.
+
+        Args:
+            account_number (int): Value representing account number.
+            client_number (int): Value representing client number.
+            balance (float): Value representing balance.
+            date_created (date): Value representing the date the account was created.
+            overdraft_limit (float): Value representing the overdraft limit.
+            overdraft_rate (float): Value representing the overdraft limit.
 
         """
         
@@ -35,7 +43,10 @@ class ChequingAccount(BankAccount):
     
     def get_service_charges(self):
         """
-        Docstring
+        Calculates and returns the service charges.
+
+        Returns:
+            calculated service charge (float): The calculated service charge.
 
         """
         if self._BankAccount__balance >= self.__overdraft_limit:
@@ -46,7 +57,10 @@ class ChequingAccount(BankAccount):
 
     def __str__(self):
         """
-        Docstring!
+        A formatted string representation of the chequing account class
+
+        Returns:
+            str: formated string of chequing accound.
 
         """
         return (f"Account Number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"

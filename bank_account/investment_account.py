@@ -6,14 +6,20 @@ from datetime import date, timedelta
 
 class InvestmentAccount(BankAccount):
     """
-    Docstring!
+    InvestmentAccount class: Maintains investing account information.
 
     """
 
     def __init__(self, account_number : int, client_number : int, 
                  balance : float, date_created : date, management_fee : float):
         """
-        Docstring!
+        Initializes the investment account class with argument values.
+
+        account_number (int): Value representing account number.
+        client_number (int): Value representing client number. 
+        balance (float): value representing balance.
+        date_created (date): The date the account was created.
+        management_fee (float): Value representing management fee.
 
         """
         super().__init__(account_number, client_number, balance, date_created)
@@ -28,6 +34,13 @@ class InvestmentAccount(BankAccount):
 
 
     def get_service_charges(self):
+        """
+        Gets the service charge for the transaction.
+
+        Returns:
+            float: calculated service charge.
+        
+        """
         if self._date_created < self.TEN_YEARS_AGO:
             return self.BASE_SERVICE_CHARGE
         else:
@@ -37,7 +50,10 @@ class InvestmentAccount(BankAccount):
 
     def __str__(self):
         """
-        Docstring!
+        Returns string representation of the investing account class.
+
+        Returns:
+            str: String representation of the investment account.
 
         """
         if self._date_created < self.TEN_YEARS_AGO:
