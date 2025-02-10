@@ -50,4 +50,4 @@ class ChequingAccount(BankAccount):
 
         """
         return (f"Account Number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
-                f"Overdraft Limit: ${self.__overdraft_limit:,.2f} Overdraft Rate: {self.__overdraft_rate}% Account Type: Chequing")
+                f"Overdraft Limit: ${self.__overdraft_limit:,.2f} Overdraft Rate: {self.__overdraft_rate * 100:,.2f}% Account Type: Chequing")

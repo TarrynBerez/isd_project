@@ -4,7 +4,7 @@ the BankAccount sub classes.
 """
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
-__credits__ = ""
+__credits__ = "Tarryn Bereznycky"
 
 # 1.  Import all BankAccount types using the bank_account package
 #     Import date from datetime
@@ -16,8 +16,7 @@ from datetime import date
 # 2. Create an instance of a ChequingAccount with values of your 
 # choice including a balance which is below the overdraft limit.
 try:
-    chequing_account = ChequingAccount(1001, 1111, 500, date(2023, 5, 5), 1000, 0.10)
-    print("step 2")
+    chequing_account = ChequingAccount(1001, 1111, -500, date(2023, 5, 5), -100, 0.10)
 except ValueError as e:
     print(e)
 
@@ -53,7 +52,6 @@ print("===================================================")
 
 try:    
     savings_account = SavingsAccount(1001, 1111, 15000, date(2020, 2, 13), 1000 )
-    print("step5")
 except ValueError as e:
     print(e)
 
@@ -85,7 +83,6 @@ print("===================================================")
 # choice including a date created within the last 10 years.
 try:
     investment_account = InvestmentAccount(1001, 1111, 15000, date(2020, 2, 2), 10)
-    print("step 8")
 except ValueError as e:
     print(e)
 
@@ -103,7 +100,6 @@ except ValueError as e:
 
 try:
     investment_account2 = InvestmentAccount(1012, 2222, 10000, date(2014, 7, 14), 10)
-    print("Step 10")
 except ValueError as e:
     print(e)
 
@@ -125,7 +121,7 @@ print("===================================================")
 # polymorphic get_service_charges method.
 
 try:
-    chequing_account.withdraw(50.5)
+    chequing_account.withdraw(40.5)
     savings_account.withdraw(0.5)
     investment_account.withdraw(10.5)
     investment_account2.withdraw(0.5)
