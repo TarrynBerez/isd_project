@@ -24,6 +24,10 @@ class SavingsAccount(BankAccount):
             date_created (date): Value representing the date the account was created.
             minimum_balance (float): The minum balance the savings account can have.
 
+        Raises:
+            ValueError: If account number is not numeric or client number
+                is not numeric.
+
         """
         super().__init__(account_number, client_number, balance, date_created)
         
@@ -39,7 +43,7 @@ class SavingsAccount(BankAccount):
 
 
 
-    def get_service_charges(self):
+    def get_service_charges(self) -> float:
         """
         Calculates the service charge of the transaction.
 
@@ -47,13 +51,14 @@ class SavingsAccount(BankAccount):
             float: The calculated service charge.
         
         """
-        if self._BankAccount__balance >= self.__minimum_balance:
-            return self.BASE_SERVICE_CHARGE
-        elif self._BankAccount__balance < self.__minimum_balance:
-            return self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
+        if self.balance >= self.__minimum_balance:
+            value = self.BASE_SERVICE_CHARGE
+        elif self.balance < self.__minimum_balance:
+            value = self.BASE_SERVICE_CHARGE * self.SERVICE_CHARGE_PREMIUM
+        return value
 
     
-    def __str__(self):
+    def __str__(self) -> str:
         """
         A formatted string represenation of the SavingsAccount class.
 
@@ -61,7 +66,7 @@ class SavingsAccount(BankAccount):
             str: String representation of the savings account.
 
         """
-        return (f"Account Number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
+        return (f"{super().__str__()}\n"
                 f"Minimum Balance: ${self.__minimum_balance:,.2f} Account Type: Savings")
     
 

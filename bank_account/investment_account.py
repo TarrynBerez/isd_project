@@ -21,6 +21,10 @@ class InvestmentAccount(BankAccount):
         date_created (date): The date the account was created.
         management_fee (float): Value representing management fee.
 
+        Raises:
+            ValueError: If account number is not numeric or client number
+                is not numeric.
+
         """
         super().__init__(account_number, client_number, balance, date_created)
 
@@ -33,7 +37,7 @@ class InvestmentAccount(BankAccount):
         
 
 
-    def get_service_charges(self):
+    def get_service_charges(self) -> float:
         """
         Gets the service charge for the transaction.
 
@@ -42,13 +46,13 @@ class InvestmentAccount(BankAccount):
         
         """
         if self._date_created < self.TEN_YEARS_AGO:
-            return self.BASE_SERVICE_CHARGE
+            value = self.BASE_SERVICE_CHARGE
         else:
-            return self.BASE_SERVICE_CHARGE + self.__management_fee
-        
+            value = self.BASE_SERVICE_CHARGE + self.__management_fee
+        return value
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Returns string representation of the investing account class.
 
@@ -57,10 +61,12 @@ class InvestmentAccount(BankAccount):
 
         """
         if self._date_created < self.TEN_YEARS_AGO:
-            return (f"Account_number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
-                    f"Date Created: {self._date_created} Management Fee: ${self.__management_fee:,.2f} Account Type: Investment")
+            fee = "Waived"
         else:
-            return (f"Account_number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
-                    f"Date Created: {self._date_created} Management Fee: Waived Account Type: Investment")
+            fee = f"${self.__management_fee:,.2f}"
+ 
+        return (f"{super().__str__()}\n"
+                f"Date Created: {self._date_created} Management Fee: {fee} Account Type: Investment")
+
 
     

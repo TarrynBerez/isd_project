@@ -13,7 +13,7 @@ class TestChequingAccount(unittest.TestCase):
     def test_init_valid_input_attributes(self):
         expected_date = date(2025, 2, 9)
         chequing_account = ChequingAccount(1001, 1111, 11000,
-                                            date, -100, 0.10)
+                                            expected_date, -100, 0.10)
         self.assertEqual(1001, chequing_account._BankAccount__account_number)
         self.assertEqual(1111, chequing_account._BankAccount__client_number)
         self.assertEqual(11000, chequing_account._BankAccount__balance)

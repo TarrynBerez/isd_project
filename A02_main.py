@@ -100,7 +100,7 @@ except ValueError as e:
 # choice including a date created prior to 10 years ago.
 
 try:
-    investment_account2 = InvestmentAccount(1012, 2222, 10000, date(2014, 7, 14), 10)
+    investment_account_2 = InvestmentAccount(1012, 2222, 10000, date(2014, 7, 14), 10)
 except ValueError as e:
     print(e)
 
@@ -109,8 +109,8 @@ except ValueError as e:
 # current state of the InvestmentAccount created in step 10.
 
 try:
-    print(investment_account2)
-    print(investment_account2.get_service_charges())
+    print(investment_account_2)
+    print(investment_account_2.get_service_charges())
 except ValueError as e:
     print(e)
 
@@ -122,15 +122,24 @@ print("===================================================")
 # polymorphic get_service_charges method.
 
 try:
-    chequing_account.withdraw(40.5)
-    savings_account.withdraw(0.5)
-    investment_account.withdraw(10.5)
-    investment_account2.withdraw(0.5)
-
+    chequing_account.withdraw(chequing_account.get_service_charges())
 except ValueError as e:
     print(e)
 
+try:
+    savings_account.withdraw(savings_account.get_service_charges())
+except ValueError as e:
+    print(e)
 
+try:
+    investment_account.withdraw(investment_account.get_service_charges())
+except ValueError as e:
+    print(e)
+
+try:
+    investment_account_2.withdraw(investment_account_2.get_service_charges())
+except ValueError as e:
+    print(e)
 
 # 13. Print each of the bank account objects created in steps 2, 5, 8 and 10.
 
@@ -138,6 +147,6 @@ try:
     print(chequing_account)
     print(savings_account)
     print(investment_account)
-    print(investment_account2)
+    print(investment_account_2)
 except ValueError as e:
     print(e)

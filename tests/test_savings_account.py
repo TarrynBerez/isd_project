@@ -8,7 +8,7 @@ class TestSavingsAccount(unittest.TestCase):
     def test_init_valid_input_attributes(self):
         expected_date = date(2025, 2, 9)
         savings_account = SavingsAccount(1001, 1111, 15000,
-                                         date, 10)
+                                         expected_date, 10)
         
         self.assertEqual(1001, savings_account._BankAccount__account_number)
         self.assertEqual(1111, savings_account._BankAccount__client_number)

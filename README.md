@@ -12,5 +12,5 @@ In the bank account class encapsulation was achived by making the account_number
 only accessible in the class. Also methods like update_balance, deposit and withdraw were added to interact with and update the balance.
 
 ## Assignment
-Assignment 1:  Details about the previous assignment.
-Assignment [assignment number]: [Indicate the name and description of the current assignment]
+Assignment 1: We created a bank account class and incorperated encapsulation through the use of private attributes, public accessors and mutators.
+Assignment 2: In this assignment we used abstraction, inheritance and polymorphism to create a chequing, investment, and savings account.

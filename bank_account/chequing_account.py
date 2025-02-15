@@ -23,6 +23,10 @@ class ChequingAccount(BankAccount):
             overdraft_limit (float): Value representing the overdraft limit.
             overdraft_rate (float): Value representing the overdraft limit.
 
+        Raises:
+            ValueError: If account number is not numeric or client number
+                is not numeric.
+
         """
         
         super().__init__(account_number, client_number, balance,
@@ -41,21 +45,22 @@ class ChequingAccount(BankAccount):
             self.__overdraft_rate = 0.05
 
     
-    def get_service_charges(self):
+    def get_service_charges(self) -> float:
         """
         Calculates and returns the service charges.
 
         Returns:
-            calculated service charge (float): The calculated service charge.
+            float: The calculated service charge.
 
         """
-        if self._BankAccount__balance >= self.__overdraft_limit:
-            return self.BASE_SERVICE_CHARGE
-        elif self._BankAccount__balance < self.__overdraft_limit:
-            return self.BASE_SERVICE_CHARGE + (self.__overdraft_limit - self._BankAccount__balance) * self.__overdraft_rate
+        if self.balance >= self.__overdraft_limit:
+            value = self.BASE_SERVICE_CHARGE
+        elif self.balance < self.__overdraft_limit:
+            value = self.BASE_SERVICE_CHARGE + (self.__overdraft_limit - self.balance) * self.__overdraft_rate
+        return value
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         A formatted string representation of the chequing account class
 
@@ -63,5 +68,5 @@ class ChequingAccount(BankAccount):
             str: formated string of chequing accound.
 
         """
-        return (f"Account Number: {self._BankAccount__account_number} Balance: ${self._BankAccount__balance:,.2f}\n"
+        return (f"{super().__str__()}\n"
                 f"Overdraft Limit: ${self.__overdraft_limit:,.2f} Overdraft Rate: {self.__overdraft_rate * 100:,.2f}% Account Type: Chequing")
