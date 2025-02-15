@@ -1,13 +1,18 @@
 __author__ = "Tarryn Bereznycky"
 __version__ = "1.0.0"
 
-class BankAccount:
+from datetime import date
+from abc import ABC, abstractmethod
+
+class BankAccount(ABC):
     """
     BankData class: Maintains BankAccount data.
 
     """
-    def __init__(self, account_number : int, 
-                 client_number : int, balance : float):
+    #Base Service Charge
+    
+    def __init__(self, account_number : int, client_number : int, 
+                 balance : float, date_created : date):
         """
         Initializes the class attribute with the argument values.
 
@@ -39,7 +44,15 @@ class BankAccount:
             self.__balance = balance
         except ValueError:
             self.__balance = 0
+
+        #Date Created
+        if isinstance(date_created ,date):
+            self._date_created = date_created    
+        else:
+            self._date_created = date.today()
         
+        #Base Service Charge
+        self.BASE_SERVICE_CHARGE = 0.50
 
     
     @property
@@ -152,6 +165,11 @@ class BankAccount:
         self.update_balance(-amount)
 
 
+    @abstractmethod
+    def get_service_charges(self) -> float:
+        pass
+ 
+ 
     def __str__(self) -> str:
         """
         Returns a string representatio of the account
@@ -161,3 +179,4 @@ class BankAccount:
         """
         return (f"Account Number: {self.__account_number} "
                 f"Balance: ${self.__balance:,.2f}")
+    
