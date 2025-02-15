@@ -14,12 +14,18 @@ class TestChequingAccount(unittest.TestCase):
         expected_date = date(2025, 2, 9)
         chequing_account = ChequingAccount(1001, 1111, 11000,
                                             expected_date, -100, 0.10)
-        self.assertEqual(1001, chequing_account._BankAccount__account_number)
-        self.assertEqual(1111, chequing_account._BankAccount__client_number)
-        self.assertEqual(11000, chequing_account._BankAccount__balance)
-        self.assertEqual(-100, chequing_account._ChequingAccount__overdraft_limit)
-        self.assertEqual(0.10, chequing_account._ChequingAccount__overdraft_rate)
-        self.assertEqual(expected_date, chequing_account._date_created)
+        self.assertEqual(1001, 
+                         chequing_account._BankAccount__account_number)
+        self.assertEqual(1111, 
+                         chequing_account._BankAccount__client_number)
+        self.assertEqual(11000, 
+                         chequing_account._BankAccount__balance)
+        self.assertEqual(-100, 
+                         chequing_account._ChequingAccount__overdraft_limit)
+        self.assertEqual(0.10, 
+                         chequing_account._ChequingAccount__overdraft_rate)
+        self.assertEqual(expected_date, 
+                         chequing_account._date_created)
 
 
     def test_init_invalid_overdraft_limit_type(self):
@@ -27,7 +33,8 @@ class TestChequingAccount(unittest.TestCase):
         chequing_account = ChequingAccount(1001, 1111, 11000, expected_date,
                                            "- one hundred", 0.10)
         
-        self.assertEqual(chequing_account._ChequingAccount__overdraft_limit, -100)
+        self.assertEqual(chequing_account._ChequingAccount__overdraft_limit, 
+                         -100)
 
 
     def test_init_invalid_overdraft_rate_type(self):
@@ -35,7 +42,8 @@ class TestChequingAccount(unittest.TestCase):
         chequing_account = ChequingAccount(1001, 1111, 11000, expected_date,
                                            -100, "ten percent")
         
-        self.assertEqual(chequing_account._ChequingAccount__overdraft_rate, 0.05)
+        self.assertEqual(chequing_account._ChequingAccount__overdraft_rate, 
+                         0.05)
         
     
     def test_init_invalid_date_type(self):
@@ -51,7 +59,8 @@ class TestChequingAccount(unittest.TestCase):
         chequing_account = ChequingAccount(1001, 1111, 11000, expected_date,
                                            -100, 0.10)
         expected_result = 0.5
-        self.assertEqual(expected_result, chequing_account.get_service_charges())
+        self.assertEqual(expected_result, 
+                         chequing_account.get_service_charges())
 
 
     def test_get_services_charge_less_than_balance(self):
@@ -60,7 +69,8 @@ class TestChequingAccount(unittest.TestCase):
                                            -100, 0.10)
 
         expected_result = 40.5
-        self.assertEqual(expected_result, chequing_account.get_service_charges())
+        self.assertEqual(expected_result, 
+                         chequing_account.get_service_charges())
 
     
     def test_get_services_charge_equal_to_balance(self):
@@ -68,7 +78,8 @@ class TestChequingAccount(unittest.TestCase):
         chequing_account = ChequingAccount(1001, 1111, -500, expected_date,
                                            -500, 0.10)
         expected_result = 0.5
-        self.assertEqual(expected_result, chequing_account.get_service_charges())
+        self.assertEqual(expected_result, 
+                         chequing_account.get_service_charges())
 
 
     def test_str_appropriate_value_returned(self):
@@ -77,5 +88,6 @@ class TestChequingAccount(unittest.TestCase):
                                            -100, 0.10)
 
         expected_result = (f"Account Number: 1001 Balance: $15,000.00\n"
-        f"Overdraft Limit: $-100.00 Overdraft Rate: 10.00% Account Type: Chequing")
+        f"Overdraft Limit: $-100.00 Overdraft "
+        f"Rate: 10.00% Account Type: Chequing")
         self.assertEqual(str(chequing_account), expected_result)

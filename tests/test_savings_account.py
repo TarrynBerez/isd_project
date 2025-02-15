@@ -10,18 +10,24 @@ class TestSavingsAccount(unittest.TestCase):
         savings_account = SavingsAccount(1001, 1111, 15000,
                                          expected_date, 10)
         
-        self.assertEqual(1001, savings_account._BankAccount__account_number)
-        self.assertEqual(1111, savings_account._BankAccount__client_number)
-        self.assertEqual(15000, savings_account._BankAccount__balance)
-        self.assertEqual(expected_date, savings_account._date_created)
-        self.assertEqual(10, savings_account._SavingsAccount__minimum_balance)
+        self.assertEqual(1001, 
+                         savings_account._BankAccount__account_number)
+        self.assertEqual(1111, 
+                         savings_account._BankAccount__client_number)
+        self.assertEqual(15000, 
+                         savings_account._BankAccount__balance)
+        self.assertEqual(expected_date, 
+                         savings_account._date_created)
+        self.assertEqual(10, 
+                         savings_account._SavingsAccount__minimum_balance)
 
 
     def test_init_minimum_balance_invalid_type(self):
         savings_account = SavingsAccount(1001, 1111, 15000,
                                          date(2025, 2, 9), "Ten")
         expected_result = 50
-        self.assertEqual(expected_result, savings_account._SavingsAccount__minimum_balance)
+        self.assertEqual(expected_result, 
+                         savings_account._SavingsAccount__minimum_balance)
 
 
     #Get Service Charges Tests

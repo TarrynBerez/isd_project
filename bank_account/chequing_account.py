@@ -19,7 +19,8 @@ class ChequingAccount(BankAccount):
             account_number (int): Value representing account number.
             client_number (int): Value representing client number.
             balance (float): Value representing balance.
-            date_created (date): Value representing the date the account was created.
+            date_created (date): Value representing the date 
+                the account was created.
             overdraft_limit (float): Value representing the overdraft limit.
             overdraft_rate (float): Value representing the overdraft limit.
 
@@ -56,7 +57,8 @@ class ChequingAccount(BankAccount):
         if self.balance >= self.__overdraft_limit:
             value = self.BASE_SERVICE_CHARGE
         elif self.balance < self.__overdraft_limit:
-            value = self.BASE_SERVICE_CHARGE + (self.__overdraft_limit - self.balance) * self.__overdraft_rate
+            value = self.BASE_SERVICE_CHARGE + \
+                (self.__overdraft_limit - self.balance) * self.__overdraft_rate
         return value
 
 
@@ -69,4 +71,7 @@ class ChequingAccount(BankAccount):
 
         """
         return (f"{super().__str__()}\n"
-                f"Overdraft Limit: ${self.__overdraft_limit:,.2f} Overdraft Rate: {self.__overdraft_rate * 100:,.2f}% Account Type: Chequing")
+                f"Overdraft Limit: ${self.__overdraft_limit:,.2f} "
+                f"Overdraft Rate: "
+                f"{self.__overdraft_rate * 100:,.2f}% "
+                f"Account Type: Chequing")

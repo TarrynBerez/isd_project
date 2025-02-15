@@ -17,18 +17,25 @@ class TestInvestmentAccount(unittest.TestCase):
         investment_account = InvestmentAccount(1001, 1111, 15000,
                                                date(2025, 2, 9), 2.00)
         
-        self.assertEqual(1001, investment_account._BankAccount__account_number)
-        self.assertEqual(1111, investment_account._BankAccount__client_number)
-        self.assertEqual(15000, investment_account._BankAccount__balance)
-        self.assertEqual(date(2025,2 ,9), investment_account._date_created)
-        self.assertEqual(2.00, investment_account._InvestmentAccount__management_fee)
+        self.assertEqual(1001, 
+                         investment_account._BankAccount__account_number)
+        self.assertEqual(1111, 
+                         investment_account._BankAccount__client_number)
+        self.assertEqual(15000, 
+                         investment_account._BankAccount__balance)
+        self.assertEqual(date(2025,2 ,9), 
+                         investment_account._date_created)
+        self.assertEqual(2.00, 
+                         investment_account._InvestmentAccount__management_fee)
 
     
     def test_init_management_fee_invalid_type(self):
         investment_account = InvestmentAccount(1001, 1111, 15000,
-                                               date(2025, 2, 9), "Two Dollars")
+                                               date(2025, 2, 9), 
+                                               "Two Dollars")
         expected = 2.55
-        self.assertEqual(investment_account._InvestmentAccount__management_fee, expected)
+        self.assertEqual(investment_account._InvestmentAccount__management_fee, 
+                         expected)
         
 
     #Get Service Charges Tests
@@ -61,7 +68,8 @@ class TestInvestmentAccount(unittest.TestCase):
                                                 date(2025, 2, 9), 10)
         
         expected = (f"Account Number: 1001 Balance: $15,000.00\n"
-                    f"Date Created: 2025-02-09 Management Fee: $10.00 Account Type: Investment")
+                    f"Date Created: 2025-02-09 Management Fee: "
+                    f"$10.00 Account Type: Investment")
         self.assertEqual(expected, str(investment_account))
 
 
@@ -69,5 +77,6 @@ class TestInvestmentAccount(unittest.TestCase):
         investment_account = InvestmentAccount(1001, 1111, 15000,
                                                 date(2015, 1, 9), 10)
         expected = (f"Account Number: 1001 Balance: $15,000.00\n"
-                    f"Date Created: 2015-01-09 Management Fee: Waived Account Type: Investment")
+                    f"Date Created: 2015-01-09 Management Fee: "
+                    f"Waived Account Type: Investment")
         self.assertEqual(expected, str(investment_account))

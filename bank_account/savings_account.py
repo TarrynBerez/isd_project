@@ -21,15 +21,18 @@ class SavingsAccount(BankAccount):
             account_number (int): Value representing account number.
             client_number (int): Value representing client number.
             balance (float): Value representing balance.
-            date_created (date): Value representing the date the account was created.
-            minimum_balance (float): The minum balance the savings account can have.
+            date_created (date): Value representing the date the 
+                account was created.
+            minimum_balance (float): The minum balance the savings 
+                account can have.
 
         Raises:
             ValueError: If account number is not numeric or client number
                 is not numeric.
 
         """
-        super().__init__(account_number, client_number, balance, date_created)
+        super().__init__(account_number, client_number, 
+                         balance, date_created)
         
         #Minimum Balance
         try:
@@ -67,6 +70,7 @@ class SavingsAccount(BankAccount):
 
         """
         return (f"{super().__str__()}\n"
-                f"Minimum Balance: ${self.__minimum_balance:,.2f} Account Type: Savings")
+                f"Minimum Balance: ${self.__minimum_balance:,.2f} "
+                f"Account Type: Savings")
     
 

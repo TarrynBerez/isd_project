@@ -16,7 +16,8 @@ from datetime import date
 # choice including a balance which is below the overdraft limit.
 
 try:
-    chequing_account = ChequingAccount(1001, 1111, -500, date(2023, 5, 5), -100, 0.10)
+    chequing_account = ChequingAccount(1001, 1111, -500, 
+                                       date(2023, 5, 5), -100, 0.10)
 except ValueError as e:
     print(e)
 
@@ -49,7 +50,8 @@ print("===================================================")
 # choice including a balance which is above the minimum balance.
 
 try:    
-    savings_account = SavingsAccount(1001, 1111, 15000, date(2020, 2, 13), 1000 )
+    savings_account = SavingsAccount(1001, 1111, 15000, 
+                                     date(2020, 2, 13), 1000 )
 except ValueError as e:
     print(e)
 
@@ -82,7 +84,8 @@ print("===================================================")
 # choice including a date created within the last 10 years.
 
 try:
-    investment_account = InvestmentAccount(1001, 1111, 15000, date(2020, 2, 2), 10)
+    investment_account = InvestmentAccount(1001, 1111, 15000, 
+                                           date(2020, 2, 2), 10)
 except ValueError as e:
     print(e)
 
@@ -100,7 +103,8 @@ except ValueError as e:
 # choice including a date created prior to 10 years ago.
 
 try:
-    investment_account_2 = InvestmentAccount(1012, 2222, 10000, date(2014, 7, 14), 10)
+    investment_account_2 = InvestmentAccount(1012, 2222, 10000, 
+                                             date(2014, 7, 14), 10)
 except ValueError as e:
     print(e)
 

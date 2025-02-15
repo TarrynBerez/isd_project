@@ -26,7 +26,8 @@ class InvestmentAccount(BankAccount):
                 is not numeric.
 
         """
-        super().__init__(account_number, client_number, balance, date_created)
+        super().__init__(account_number, client_number, 
+                         balance, date_created)
 
         self.TEN_YEARS_AGO = date.today() - timedelta(days = 10 * 356.25)
 
@@ -66,7 +67,8 @@ class InvestmentAccount(BankAccount):
             fee = f"${self.__management_fee:,.2f}"
  
         return (f"{super().__str__()}\n"
-                f"Date Created: {self._date_created} Management Fee: {fee} Account Type: Investment")
+                f"Date Created: {self._date_created} Management Fee: {fee} "
+                f"Account Type: Investment")
 
 
     
