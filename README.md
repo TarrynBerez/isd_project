@@ -14,3 +14,7 @@ only accessible in the class. Also methods like update_balance, deposit and with
 ## Assignment
 Assignment 1: We created a bank account and client class and incorperated encapsulation through the use of private attributes, public accessors and mutators.
 Assignment 2: In this assignment we used abstraction, inheritance and polymorphism to create a chequing, investment, and savings account.
+
+## Polymorphism
+Polymorphism was achived in the subclasses by using the super init to initialize attributes inherited from the bank account class and each
+subclass having unique implimentation to the get_service_chrages method and __ str__.
