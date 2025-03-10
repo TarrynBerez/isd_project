@@ -4,7 +4,7 @@ __version__ = "1.0.0"
 from abc import ABC, abstractmethod
 from bank_account.bank_account import BankAccount
 
-class BaseServiceCharge(ABC):
+class ServiceChargeStrategy(ABC):
     """
     Docstring!
     
