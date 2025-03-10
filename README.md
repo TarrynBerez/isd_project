@@ -6,6 +6,8 @@ Tarryn Bereznycky
 
 ## Assignment
 Assignment 01: isd_project. Building classes to be used in systems that will incorperate encapsulation.
+Assignment 2:  Details about the previous assignment.
+Assignment 3: [Indicate the name and description of the current assignment]
 
 ## Encapsulation
 In the bank account class encapsulation was achived by making the account_number, client_number, and balance so they are
