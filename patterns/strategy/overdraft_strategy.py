@@ -14,7 +14,7 @@ class OverdraftStrategy(ServiceChargeStrategy):
         self.__overdraft_rate = overdraft_rate
 
 
-    def get_service_charges(self) -> float:
+    def calculate_service_charges(self) -> float:
         """
         Calculates and returns the service charges.
 

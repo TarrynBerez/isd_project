@@ -9,11 +9,12 @@ class ServiceChargeStrategy(ABC):
     Docstring!
     
     """
+    BASE_SERVICE_CHARGE = 0.50   
+    
     @abstractmethod
-    def calculate_service_charge(self, account : BankAccount):
+    def calculate_service_charges(self, account : BankAccount):
         """
         Docstring!
-
+        
         """
-        self.BASE_SERVICE_CHARGE = 0.50
         pass

@@ -1,4 +1,5 @@
 from patterns.strategy.service_charge_strategy import ServiceChargeStrategy
+from bank_account.bank_account import BankAccount
 from datetime import date, timedelta 
 
 class ManagementFeeStrategy(ServiceChargeStrategy):
@@ -16,7 +17,7 @@ class ManagementFeeStrategy(ServiceChargeStrategy):
         self.TEN_YEARS_AGO = date.today() - timedelta(days = 10 * 365.25)
 
 
-    def get_service_charges(self) -> float:
+    def calculate_service_charges(self, account : BankAccount) -> float:
         """
         Gets the service charge for the transaction.
 
