@@ -1,6 +1,7 @@
 __author__ = "Tarryn Bereznycky"
 __version__ = "1.0.0"
 
+from abc import abstractmethod
 from patterns.observer.observer import Observer
 
 class Subject:
@@ -17,13 +18,16 @@ class Subject:
         self._observers = []
     
 
+    @abstractmethod
     def attach(self, observer : Observer):
         pass
 
 
-    def detach(observer : Observer):
+    @abstractmethod
+    def detach(self, observer : Observer):
         pass
 
- 
-    def notify(message : str):
+
+    @abstractmethod
+    def notify(self, message : str):
         pass

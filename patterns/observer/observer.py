@@ -11,7 +11,7 @@ class Observer(ABC):
     """
 
     @abstractmethod
-    def update(message : str):
+    def update(self, message : str):
         """
         Docstring!
         

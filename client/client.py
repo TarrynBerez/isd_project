@@ -2,8 +2,11 @@ __author__ = "Tarryn Bereznycky"
 __version__ = "1.0.0"
 
 from email_validator import validate_email, EmailNotValidError
+from patterns.observer.observer import Observer
+from utility.file_utils import simulate_send_email
+from datetime import date, datetime
 
-class Client:
+class Client(Observer):
     """
     Client Class: Maintains Client data.
 
@@ -104,6 +107,18 @@ class Client:
 
         """
         return self.__email_address
+    
+
+    def update(self, message : str):
+        """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Docstring !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+        """
+        subject = f"ALERT: Unusual Activity: {date.today()}"
+        message = f"Notification for {self.__client_number}: {self.__first_name} {self.__last_name}: {message}"
+
+        simulate_send_email(self.__email_address, subject, message)
+
 
 
     def __str__(self) -> str:

@@ -1,3 +1,5 @@
+__author__ = "Tarryn Bereznycky"
+__version__ = "1.0.0"
 
 from patterns.strategy.service_charge_strategy import ServiceChargeStrategy
 from bank_account.bank_account import BankAccount
