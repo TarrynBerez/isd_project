@@ -6,10 +6,17 @@ from bank_account.bank_account import BankAccount
 
 class MinimumBalanceStrategy(ServiceChargeStrategy):
     """
-    Docstring!
+    Strategy for calculating service charges based on the minimum balance
     
     """
     def __init__(self, minimum_balance : float) -> float:
+        """
+        Initializes the minimum balance threshold for premium service charge 
+        
+        Args:
+            minimum_balance (float): The threshold where additional charges apply
+            
+        """
         self.SERVICE_CHARGE_PREMIUM = 2.0
         self.__minimum_balance = minimum_balance
         

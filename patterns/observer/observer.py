@@ -6,14 +6,17 @@ from abc import ABC, abstractmethod
 
 class Observer(ABC):
     """
-    Docstring!
+    Abstract class for observers that receive notifications.
     
     """
 
     @abstractmethod
     def update(self, message : str):
         """
-        Docstring!
+        Method to handle incoming notifications.
+
+        Args:
+            message (str): The notification message.
         
         """
         pass

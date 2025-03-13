@@ -111,7 +111,10 @@ class Client(Observer):
 
     def update(self, message : str):
         """
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Docstring !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Updates the observer with a notification message and sends an email.
+
+        Args:
+            message (str): The message content to be included in the email.
         
         """
         subject = f"ALERT: Unusual Activity: {date.today()}"

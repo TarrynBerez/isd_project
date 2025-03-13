@@ -4,13 +4,14 @@ __version__ = "1.0.0"
 from datetime import date
 from abc import ABC, abstractmethod
 
-class BankAccount(ABC):
+from patterns.observer.subject import Subject
+
+class BankAccount(Subject, ABC):
     """
     BankData class: Maintains BankAccount data.
     
     """
-    #Base Service Charge
-    
+
     def __init__(self, account_number : int, client_number : int, 
                 balance : float, date_created : date):
         """
@@ -26,6 +27,10 @@ class BankAccount(ABC):
                 is not numeric.
     
         """
+        #Super Init
+        super().__init__()
+
+
         #Account Number 
         if isinstance(account_number, int):
             self.__account_number = account_number
@@ -50,9 +55,10 @@ class BankAccount(ABC):
             self._date_created = date_created    
         else:
             self._date_created = date.today()
+
+        self.LARGE_TRANSACTION_THRESHOLD = 9999.99
+        self.LOW_BALANCE_LEVEL = 50.0
         
-        #Base Service Charge
-    
     
     @property
     def account_number(self) -> int:
@@ -106,6 +112,19 @@ class BankAccount(ABC):
             self.__balance += float(amount)
         except ValueError:
             pass
+
+        if self.__balance < self.LOW_BALANCE_LEVEL:        # <----------------- Causing Issues
+            message = f"Low balance Warning ${self.__balance:,.2f}: on account {self.__account_number}."
+
+            print("Low Balance")
+            self.notify(message)
+
+        if abs(amount) > self.LARGE_TRANSACTION_THRESHOLD: # <----------------- Not Causing Issues ??
+            message = f"Large transaction ${amount:,.2f}: on account {self.__account_number}."
+
+            print("Large Transaction")
+            self.notify(message)
+            
     
     
     def deposit(self, amount : float):
@@ -144,7 +163,7 @@ class BankAccount(ABC):
             
         Raises:
             ValueError: If withdraw amount is negative, not numeric, 
-                exeeds the balance.
+                exceeds the balance.
         
         """
         try:
@@ -167,11 +186,42 @@ class BankAccount(ABC):
     @abstractmethod
     def get_service_charges(self) -> float:
         pass
+
+
+    def attach(self, observer):
+        """
+        Args:
+            observer (Observer): 
+        
+        """
+        self._observers.append(observer)
+    
+
+    def detach(self, observer):
+        """
+        Args:
+            observer (Observer): 
+        
+        """
+        if observer in self._observers:
+            self._observers.remove(observer)
+        
+    
+    def notify(self, message):
+        """
+        Args:
+            message (str): 
+        
+        """
+        for observer in self._observers:
+            print(f"Notifying {observer}")# Test Notify
+            observer.update(message)#     <----------- !! Might be an issue !!
+        
     
     
     def __str__(self) -> str:
         """
-        Returns a string representatio of the account
+        Returns a string representation of the account
     
         Returns:
             str: A formatted strong displaying the account number and balance
