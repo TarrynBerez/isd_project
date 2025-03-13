@@ -42,8 +42,6 @@ bens_savings_account.attach(client_ben)
 client_bob = Client(5555, "Bob", "Jablonski", "benjablonski@gmail.com")
 bobs_savings_account = SavingsAccount(1212, 5555, 30000, date(2015, 4, 6), 100)
 
-
-
 # 6. Use the ChequingAccount and SavingsAccount objects created 
 # in steps 3 and 5 above to perform transactions (deposits and withdraws) 
 # which would cause the Subject (BankAccount) to notify the Observer 
@@ -54,19 +52,53 @@ bobs_savings_account = SavingsAccount(1212, 5555, 30000, date(2015, 4, 6), 100)
 # ensure the methods are invoked using proper exception handling such 
 # that any exception messages are printed to the console.
 
-
-try:
-    bobs_savings_account.withdraw(29990)
-except ValueError as e:
-    print(e)
-
-# Ben withdraw
+#Ben
 try:
     bens_savings_account.withdraw(11000.01)
 except ValueError as e:
     print(e)
 
+
+try:
+    bens_savings_account.withdraw(8950)
+except ValueError as e:
+    print(e)
+
+
+try:
+    bens_savings_account.deposit(5000)
+except ValueError as e:
+    print(e)
+
+
+try:
+    bens_savings_account.withdraw(400)
+except ValueError as e:
+    print(e)
+
+
+
+#Bob
+try:
+    bobs_savings_account.withdraw(400)
+except ValueError as e:
+    print(e)
+
+
+try:
+    bobs_savings_account.deposit(500)
+except ValueError as e:
+    print(e)
+
+
+try:
+    bobs_savings_account.withdraw(600)
+except ValueError as e:
+    print(e)
+
+
+print("-" * 50)
 print(str(bobs_savings_account))
-print("-" * 40)
+print("-" * 50)
 print(str(bens_savings_account))
-print("-" * 40)
+print("-" * 50)

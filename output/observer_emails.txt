@@ -1,25 +1,10 @@
 ---
 To: benjohnson@gmail.com
-Subject: ALERT: Unusual Activity: 2025-03-12
-Message: Notification for 1111: Ben Johnson: Large transaction -11000.01: on account 3333.
----
----
-To: benjohnson@gmail.com
-Subject: ALERT: Unusual Activity: 2025-03-12
+Subject: ALERT: Unusual Activity: 2025-03-13
 Message: Notification for 1111: Ben Johnson: Large transaction $-11,000.01: on account 3333.
 ---
 ---
 To: benjohnson@gmail.com
-Subject: ALERT: Unusual Activity: 2025-03-12
-Message: Notification for 1111: Ben Johnson: Large transaction $-11,000.01: on account 3333.
----
----
-To: benjohnson@gmail.com
-Subject: ALERT: Unusual Activity: 2025-03-12
-Message: Notification for 1111: Ben Johnson: Large transaction $-11,000.01: on account 3333.
----
----
-To: benjohnson@gmail.com
-Subject: ALERT: Unusual Activity: 2025-03-12
-Message: Notification for 1111: Ben Johnson: Large transaction $-11,000.01: on account 3333.
+Subject: ALERT: Unusual Activity: 2025-03-13
+Message: Notification for 1111: Ben Johnson: Low balance Warning $49.99: on account 3333.
 ---

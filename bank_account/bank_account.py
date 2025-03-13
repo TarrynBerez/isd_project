@@ -30,7 +30,6 @@ class BankAccount(Subject, ABC):
         #Super Init
         super().__init__()
 
-
         #Account Number 
         if isinstance(account_number, int):
             self.__account_number = account_number
@@ -113,13 +112,13 @@ class BankAccount(Subject, ABC):
         except ValueError:
             pass
 
-        if self.__balance < self.LOW_BALANCE_LEVEL:        # <----------------- Causing Issues
+        if self.__balance < self.LOW_BALANCE_LEVEL:        
             message = f"Low balance Warning ${self.__balance:,.2f}: on account {self.__account_number}."
 
             print("Low Balance")
             self.notify(message)
 
-        if abs(amount) > self.LARGE_TRANSACTION_THRESHOLD: # <----------------- Not Causing Issues ??
+        if abs(amount) > self.LARGE_TRANSACTION_THRESHOLD: 
             message = f"Large transaction ${amount:,.2f}: on account {self.__account_number}."
 
             print("Large Transaction")
@@ -215,7 +214,7 @@ class BankAccount(Subject, ABC):
         """
         for observer in self._observers:
             print(f"Notifying {observer}")# Test Notify
-            observer.update(message)#     <----------- !! Might be an issue !!
+            observer.update(message)#     <----------- ?! Might be an issue !?
         
     
     
