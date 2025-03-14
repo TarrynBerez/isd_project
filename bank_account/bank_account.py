@@ -98,7 +98,6 @@ class BankAccount(Subject, ABC):
         return self.__balance
     
     
-    
     def update_balance(self, amount : float):
         """
         Method that updates the current balance of the account.
@@ -115,16 +114,13 @@ class BankAccount(Subject, ABC):
         if self.__balance < self.LOW_BALANCE_LEVEL:        
             message = f"Low balance Warning ${self.__balance:,.2f}: on account {self.__account_number}."
 
-            print("Low Balance")
             self.notify(message)
 
         if abs(amount) > self.LARGE_TRANSACTION_THRESHOLD: 
             message = f"Large transaction ${amount:,.2f}: on account {self.__account_number}."
 
-            print("Large Transaction")
             self.notify(message)
             
-    
     
     def deposit(self, amount : float):
         """
@@ -213,8 +209,7 @@ class BankAccount(Subject, ABC):
         
         """
         for observer in self._observers:
-            print(f"Notifying {observer}")# Test Notify
-            observer.update(message)#     <----------- ?! Might be an issue !?
+            observer.update(message)     
         
     
     

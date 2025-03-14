@@ -52,7 +52,7 @@ bobs_savings_account = SavingsAccount(1212, 5555, 30000, date(2015, 4, 6), 100)
 # ensure the methods are invoked using proper exception handling such 
 # that any exception messages are printed to the console.
 
-#Ben
+#Bens Savings Account
 try:
     bens_savings_account.withdraw(11000.01)
 except ValueError as e:
@@ -77,6 +77,36 @@ except ValueError as e:
     print(e)
 
 
+try:
+    bens_savings_account.withdraw(11000.01)
+except ValueError as e:
+    print(e)
+
+
+try:
+    bens_savings_account.withdraw(8950)
+except ValueError as e:
+    print(e)
+
+
+# Bens Chequing Account
+try:
+    bens_chequing_account.withdraw(4900)
+except ValueError as e:
+    print(e)
+
+
+try:
+    bens_chequing_account.withdraw(55)
+except ValueError as e:
+    print(e)
+
+
+try:
+    bens_chequing_account.deposit(55000)
+except ValueError as e:
+    print(e)
+
 
 #Bob
 try:
@@ -97,8 +127,3 @@ except ValueError as e:
     print(e)
 
 
-print("-" * 50)
-print(str(bobs_savings_account))
-print("-" * 50)
-print(str(bens_savings_account))
-print("-" * 50)
