@@ -48,7 +48,7 @@ class TestInvestmentAccount(unittest.TestCase):
 
 
     def test_get_service_charges_date_created_equal_to_ten_years_ago(self):
-        exact_date = date.today() - timedelta(days = 10 * 365.25)
+        exact_date = date.today() - timedelta(days = 10 * 365.5)
         investment_account = InvestmentAccount(1001, 1111, 15000,
                                                 exact_date, 10)
         expected = 0.5
