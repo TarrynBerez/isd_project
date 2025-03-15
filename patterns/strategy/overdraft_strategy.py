@@ -15,9 +15,11 @@ class OverdraftStrategy(ServiceChargeStrategy):
         Initializes the overdraft limit and overdraft rate for the strategy 
         
         Args:
-            overdraft limit (float): The limit where overdraft charges apply.
+            overdraft limit (float): The limit where overdraft 
+                charges apply.
             
-            overdraft_rate (float): The rate used to calculate overdraft charges.
+            overdraft_rate (float): The rate used to calculate 
+                overdraft charges.
             
             """
         self.__overdraft_limit = overdraft_limit
@@ -29,13 +31,13 @@ class OverdraftStrategy(ServiceChargeStrategy):
         Calculates and returns the service charges.
         
         Args:
-         bank_account (BankAccount): The bank account for which the service charges are calculated.
+         bank_account (BankAccount): The bank account for which 
+            the service charges are calculated.
         
         Returns:
             float: The calculated service charge.
         
         """
-        # Does account.balance work?
         if account.balance >= self.__overdraft_limit:
             value = self.BASE_SERVICE_CHARGE
         elif account.balance < self.__overdraft_limit:

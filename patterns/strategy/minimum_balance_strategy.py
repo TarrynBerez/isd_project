@@ -11,10 +11,12 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
     """
     def __init__(self, minimum_balance : float) -> float:
         """
-        Initializes the minimum balance threshold for premium service charge 
+        Initializes the minimum balance threshold for premium 
+        service charge 
         
         Args:
-            minimum_balance (float): The threshold where additional charges apply
+            minimum_balance (float): The threshold where 
+                additional charges apply
             
         """
         self.SERVICE_CHARGE_PREMIUM = 2.0

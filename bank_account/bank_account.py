@@ -1,5 +1,5 @@
 __author__ = "Tarryn Bereznycky"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 from datetime import date
 from abc import ABC, abstractmethod
@@ -112,12 +112,14 @@ class BankAccount(Subject, ABC):
             pass
 
         if self.__balance < self.LOW_BALANCE_LEVEL:        
-            message = f"Low balance Warning ${self.__balance:,.2f}: on account {self.__account_number}."
+            message = (f"Low balance Warning ${self.__balance:,.2f}: on "
+                       f"account {self.__account_number}.")
 
             self.notify(message)
 
         if abs(amount) > self.LARGE_TRANSACTION_THRESHOLD: 
-            message = f"Large transaction ${amount:,.2f}: on account {self.__account_number}."
+            message = (f"Large transaction ${amount:,.2f}: on "
+                      f"account {self.__account_number}.")
 
             self.notify(message)
             

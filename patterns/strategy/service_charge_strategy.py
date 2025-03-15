@@ -17,7 +17,8 @@ class ServiceChargeStrategy(ABC):
         Calculates the service charges for a bank account.
 
         Args: 
-            account (BankAccount): The bank account that service charges will calculate.
+            account (BankAccount): The bank account that service 
+                charges will calculate.
 
         Returns:
             float: The calculated service charge for the account.

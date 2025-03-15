@@ -7,20 +7,20 @@ from datetime import date, timedelta
 
 class ManagementFeeStrategy(ServiceChargeStrategy):
     """
-    Strategy for calculating service charges based on account creation date and
-    management fee.
+    Strategy for calculating service charges based on 
+    account creation date and management fee.
     
     """
     def __init__(self, date_created : date, management_fee : float ):
         """
-        Initializes the ManagementFeeStrategy with the date when the account was created
-        and the management fee
+        Initializes the ManagementFeeStrategy with the date 
+        when the account was created and the management fee
         
         Args:
             date_created (date): The date the account was created
             
-            management_fee(float): The management fee to be added if the account was
-                created within the last 10 years.
+            management_fee(float): The management fee to be added 
+                if the account was created within the last 10 years.
         """
         self.__date_created = date_created
         self.__management_fee = management_fee
@@ -32,7 +32,8 @@ class ManagementFeeStrategy(ServiceChargeStrategy):
         Gets the service charge for the transaction.
 
         Args:
-            account (BankAccount): The account where the services charges are applied
+            account (BankAccount): The account where the services 
+                charges are applied
         Returns:
             float: calculated service charge.
         
