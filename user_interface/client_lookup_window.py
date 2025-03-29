@@ -12,5 +12,61 @@ from user_interface.manage_data import update_data
 from bank_account.bank_account import BankAccount
 
 class ClientLookupWindow(LookupWindow):
-    pass
+    """
+    Docstring!
+    
+    """
+    def __init__(self):
+        super().__init__()
+            
+        data = load_data()
+        self.client_listing = data[0]
+        self.accounts = data[1]
         
+        self.lookup_button.clicked.connect(self.__on_lookup_client)
+        self.client_number_edit.textChanged.connect(self.__on_text_changed)
+        self.account_table.cellClicked.connect(self.__on_select_account)
+        
+        
+    def __on_lookup_client(self):
+        client_number = self.client_number_edit.text()
+        
+        try:
+            client_number = int(client_number)
+        except:
+            QMessageBox.information(self, "Input Error", "The client number must be a numeric value.") 
+            self.reset_display()
+            
+        
+        if client_number not in self.client_listing.keys():
+            QMessageBox.information(self, "Not Found", f"Client number: {client_number} not found.") 
+            self.reset_display()
+            return
+        else:
+            
+            self.client_info_label.setText(f"Client Name: {self.client_listing[client_number].first_name} "
+                                           f"{self.client_listing[client_number].last_name}") 
+            
+            for account in self.accounts.items():
+                if account[1].client_number == client_number: ##Trying to get it to pull client number from accounts
+                    
+                    
+                    
+                    row_position = self.account_table.rowCount()
+                    self.account_table.insertRow(row_position)
+                    
+                    
+                    self.account_table.setItem(row_position, 0, QTableWidgetItem(str(account[1].account_number)))
+                    self.account_table.setItem(row_position, 1, QTableWidgetItem(f"{account[1].balance:,.2f}"))
+                    self.account_table.setItem(row_position, 2, QTableWidgetItem(str(account[1]._date_created)))
+                    self.account_table.setItem(row_position, 3, QTableWidgetItem(account[1].__class__.__name__))
+                    self.account_table.resizeColumnsToContents()
+    
+    def __on_text_changed(self):
+        pass
+    
+    def __on_select_account(self):
+        pass
+    
+    def __update_data(self):
+        pass
