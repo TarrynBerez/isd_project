@@ -39,10 +39,8 @@ class ClientLookupWindow(LookupWindow):
         Docstring!
         
         """
-        client_number = self.client_number_edit.text()
-        
         try:
-            client_number = int(client_number)
+            client_number = int(self.client_number_edit.text())
         except:
             QMessageBox.information(self, "Input Error", "The client number must be a numeric value.") 
             self.reset_display()
@@ -88,13 +86,12 @@ class ClientLookupWindow(LookupWindow):
                 for account in self.accounts.items():
                     if account[1].account_number == int(selected_account):
                         account_window = AccountDetailsWindow(account[1])
-                        account_window.exec()
-                        
+                        account_window.exec()   
+                                          
             elif selected_account not in self.accounts.keys():
-                QMessageBox.information(self, "No Bank Account", "Bank Account selected does not exist.")
-                
-            elif selected_account == None:
-                QMessageBox.information(self, "Invalid Selection", "Please select a valid record.")
+                QMessageBox.information(self, "No Bank Account", "Bank Account selected does not exist.")       
+        else:
+            QMessageBox.information(self, "Invalid Selection", "Please select a valid record.")
             
     
     def __update_data(self):
