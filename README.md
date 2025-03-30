@@ -25,3 +25,7 @@ subclass having unique implementation to the get_service_charges method and __ s
 
 ## Strategy Pattern
 The strategy pattern is being used to define different ways to calculate service charges for a BankAccount class.
+
+## Event-Driven Programming Paradigm
+Event driven programming is applied when the application uses signals, for example when a button is clicked it calls a method that performs the connected action.
+                
