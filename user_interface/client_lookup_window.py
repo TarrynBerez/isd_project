@@ -1,6 +1,6 @@
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
-__credits__ = ""
+__credits__ = "Tarryn Bereznycky"
 
 from PySide6.QtWidgets import QTableWidgetItem, QMessageBox
 from PySide6.QtCore import Qt, Slot
@@ -15,12 +15,12 @@ from bank_account.bank_account import BankAccount
 
 class ClientLookupWindow(LookupWindow):
     """
-    Docstring!
+    Aa window for looking up client information and their accounts.
     
     """
     def __init__(self):
         """
-        Docstring!
+        Initializes the ClientLookupWindow.
         
         """
         super().__init__()
@@ -36,7 +36,7 @@ class ClientLookupWindow(LookupWindow):
         
     def __on_lookup_client(self):
         """
-        Docstring!
+        Retrieves and displays information for hte specified client.
         
         """
         try:
@@ -44,28 +44,26 @@ class ClientLookupWindow(LookupWindow):
         except:
             QMessageBox.information(self, "Input Error", "The client number must be a numeric value.") 
             self.reset_display()
-             
+     
         if client_number not in self.client_listing.keys():
             QMessageBox.information(self, "Not Found", f"Client number: {client_number} not found.") 
             self.reset_display()
             return
         else:
-            
             self.client_info_label.setText(f"Client Name: {self.client_listing[client_number].first_name} "
-                                           f"{self.client_listing[client_number].last_name}") 
-            
+              
+                                           f"{self.client_listing[client_number].last_name}")           
             for account in self.accounts.items():
-                if account[1].client_number == client_number: ##Trying to get it to pull client number from accounts
-                    
+                if account[1].client_number == client_number: ##Trying to get it to pull client number from accounts                  
                     row_position = self.account_table.rowCount()
                     self.account_table.insertRow(row_position)
-                    
                     
                     self.account_table.setItem(row_position, 0, QTableWidgetItem(str(account[1].account_number)))
                     self.account_table.setItem(row_position, 1, QTableWidgetItem(f"{account[1].balance:,.2f}"))
                     self.account_table.setItem(row_position, 2, QTableWidgetItem(str(account[1]._date_created)))
                     self.account_table.setItem(row_position, 3, QTableWidgetItem(account[1].__class__.__name__))
                     self.account_table.resizeColumnsToContents()
+    
     
     def __on_text_changed(self):
         """
@@ -74,11 +72,19 @@ class ClientLookupWindow(LookupWindow):
         """
         pass
     
+    
     @Slot(int, int)
     def __on_select_account(self, row : int, column : int):
         """
-        Docstring
-
+        Handles the selection of an account in the account table.
+        
+        args:
+            row (int):
+                The row of the selected cell
+                
+            column (int):
+                The column of the selected cell
+            
         """
         selected_account = self.account_table.item(row, 0).text()
         if len(selected_account.strip()) != 0:
@@ -97,16 +103,17 @@ class ClientLookupWindow(LookupWindow):
     
     def __update_data(self, account : BankAccount):
         """
-        Docstring!
+        Updates the valance of hte specified amount in hte acount table.
+        
+        Args:
+            account (BankAccount):
+                The account object containing the account number and updated balance.
         
         """
         #current_account = self.accounts[1]
         for row in range(self.account_table.rowCount()):
-            
             if int(self.account_table.item(row, 0).text()) == int(account.account_number):
-                
-                self.account_table.setItem(row, 1, QTableWidgetItem(f"{account.balance:,.2f}")) 
-                #current_account.balance = account.balance #Figure out how to properly update balance                                
+                self.account_table.setItem(row, 1, QTableWidgetItem(f"{account.balance:,.2f}"))                                 
                 update_data(account) 
                 
             
