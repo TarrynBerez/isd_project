@@ -86,6 +86,7 @@ class ClientLookupWindow(LookupWindow):
                 for account in self.accounts.items():
                     if account[1].account_number == int(selected_account):
                         account_window = AccountDetailsWindow(account[1])
+                        account_window.balance_updated.connect(self.__update_data)
                         account_window.exec()   
                                           
             elif selected_account not in self.accounts.keys():
@@ -94,9 +95,18 @@ class ClientLookupWindow(LookupWindow):
             QMessageBox.information(self, "Invalid Selection", "Please select a valid record.")
             
     
-    def __update_data(self):
+    def __update_data(self, account : BankAccount):
         """
         Docstring!
         
         """
-        pass
+        #current_account = self.accounts[1]
+        for row in range(self.account_table.rowCount()):
+            
+            if int(self.account_table.item(row, 0).text()) == int(account.account_number):
+                
+                self.account_table.setItem(row, 1, QTableWidgetItem(f"{account.balance:,.2f}")) 
+                #current_account.balance = account.balance #Figure out how to properly update balance                                
+                update_data(account) 
+                
+            

@@ -12,6 +12,8 @@ class AccountDetailsWindow(DetailsWindow):
     """
     A class used to display account details and perform bank account transactions.
     """
+    balance_updated = Signal(BankAccount)
+    
     def __init__(self, account: BankAccount) -> None:
         """
         Initializes a new instance of the ExtendedAccountDetails window.
@@ -61,6 +63,8 @@ class AccountDetailsWindow(DetailsWindow):
             QMessageBox.information(self, f"{transaction_type} Failed", str(e))
             self.transaction_amount_edit.setText("")
             self.transaction_amount_edit.setFocus()
+
+        self.balance_updated.emit(self.__account)
         
         
     def __on_exit(self):
