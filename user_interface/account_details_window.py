@@ -4,7 +4,7 @@ __credits__ = "Tarryn Bereznycky"
 
 from ui_superclasses.details_window import DetailsWindow
 from PySide6.QtWidgets import QMessageBox
-from PySide6.QtCore import Signal
+from PySide6.QtCore import Signal, Slot
 from bank_account.bank_account import BankAccount
 import copy
 
@@ -37,6 +37,7 @@ class AccountDetailsWindow(DetailsWindow):
             self.reject()
 
 
+    @Slot()
     def __on_apply_transaction(self):
         try:
             amount = float(self.transaction_amount_edit.text())
@@ -67,6 +68,6 @@ class AccountDetailsWindow(DetailsWindow):
 
         self.balance_updated.emit(self.__account)
         
-        
+    @Slot()
     def __on_exit(self):
         self.close()

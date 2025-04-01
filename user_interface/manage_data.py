@@ -48,11 +48,6 @@ accounts_csv_path = os.path.join(data_dir, 'accounts.csv')
 # END GIVEN LOGGING AND FILE ACCESS CODE
 # *******************************************************************************
 
-
-
-
-
-
 def load_data()->tuple[dict,dict]:
     """
     Populates a client dictionary and an account dictionary with 
@@ -106,10 +101,6 @@ def load_data()->tuple[dict,dict]:
             except ValueError as e:
                 logging.error(f"Unable to create bank account: {str(e)}")
 
-                
-                
-                
-
     # RETURN STATEMENT
     return (client_listing, accounts)
 
@@ -140,7 +131,6 @@ def update_data(updated_account: BankAccount) -> None:
         writer = csv.DictWriter(file, fieldnames=fields)
         writer.writeheader()
         writer.writerows(updated_rows)
-
 
 # GIVEN TESTING SECTION:
 if __name__ == "__main__":

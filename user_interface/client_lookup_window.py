@@ -5,8 +5,6 @@ __credits__ = "Tarryn Bereznycky"
 from PySide6.QtWidgets import QTableWidgetItem, QMessageBox
 from PySide6.QtCore import Qt, Slot
 
-
-
 from ui_superclasses.lookup_window import LookupWindow
 from user_interface.account_details_window import AccountDetailsWindow
 from user_interface.manage_data import load_data
@@ -26,14 +24,14 @@ class ClientLookupWindow(LookupWindow):
         super().__init__()
             
         data = load_data()
-        self.client_listing = data[0]
-        self.accounts = data[1]
+        self.__client_listing = data[0]
+        self.__accounts = data[1]
         
         self.lookup_button.clicked.connect(self.__on_lookup_client)
         self.client_number_edit.textChanged.connect(self.__on_text_changed)
         self.account_table.cellClicked.connect(self.__on_select_account)
         
-        
+    @Slot()
     def __on_lookup_client(self):
         """
         Retrieves and displays information for hte specified client.
@@ -45,15 +43,15 @@ class ClientLookupWindow(LookupWindow):
             QMessageBox.information(self, "Input Error", "The client number must be a numeric value.") 
             self.reset_display()
      
-        if client_number not in self.client_listing.keys():
+        if client_number not in self.__client_listing.keys():
             QMessageBox.information(self, "Not Found", f"Client number: {client_number} not found.") 
             self.reset_display()
             return
         else:
-            self.client_info_label.setText(f"Client Name: {self.client_listing[client_number].first_name} "
+            self.client_info_label.setText(f"Client Name: {self.__client_listing[client_number].first_name} "
               
-                                           f"{self.client_listing[client_number].last_name}")           
-            for account in self.accounts.items():
+                                           f"{self.__client_listing[client_number].last_name}")           
+            for account in self.__accounts.items():
                 if account[1].client_number == client_number: ##Trying to get it to pull client number from accounts                  
                     row_position = self.account_table.rowCount()
                     self.account_table.insertRow(row_position)
@@ -64,13 +62,13 @@ class ClientLookupWindow(LookupWindow):
                     self.account_table.setItem(row_position, 3, QTableWidgetItem(account[1].__class__.__name__))
                     self.account_table.resizeColumnsToContents()
     
-    
+    @Slot()
     def __on_text_changed(self):
         """
-        Docstring!
+        Clears all table rows when the text in the box changes.
         
         """
-        pass
+        self.account_table.setRowCount(0)
     
     
     @Slot(int, int)
@@ -87,20 +85,22 @@ class ClientLookupWindow(LookupWindow):
             
         """
         selected_account = self.account_table.item(row, 0).text()
+        
         if len(selected_account.strip()) != 0:
-            if int(selected_account) in self.accounts.keys():
-                for account in self.accounts.items():
+            if int(selected_account) in self.__accounts.keys():
+                for account in self.__accounts.items():
                     if account[1].account_number == int(selected_account):
                         account_window = AccountDetailsWindow(account[1])
                         account_window.balance_updated.connect(self.__update_data)
                         account_window.exec()   
                                           
-            elif selected_account not in self.accounts.keys():
+            elif selected_account not in self.__accounts.keys():
                 QMessageBox.information(self, "No Bank Account", "Bank Account selected does not exist.")       
         else:
             QMessageBox.information(self, "Invalid Selection", "Please select a valid record.")
             
     
+    @Slot(BankAccount)
     def __update_data(self, account : BankAccount):
         """
         Updates the valance of hte specified amount in hte acount table.
@@ -110,10 +110,9 @@ class ClientLookupWindow(LookupWindow):
                 The account object containing the account number and updated balance.
         
         """
-        #current_account = self.accounts[1]
         for row in range(self.account_table.rowCount()):
             if int(self.account_table.item(row, 0).text()) == int(account.account_number):
                 self.account_table.setItem(row, 1, QTableWidgetItem(f"{account.balance:,.2f}"))                                 
-                update_data(account) 
                 
-            
+        self.__accounts[account.account_number] = account
+        update_data(account)     
