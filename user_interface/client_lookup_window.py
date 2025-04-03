@@ -34,36 +34,42 @@ class ClientLookupWindow(LookupWindow):
     @Slot()
     def __on_lookup_client(self):
         """
-        Retrieves and displays information for hte specified client.
+        Retrieves and displays information for the specified client.
         
         """
         try:
             client_number = int(self.client_number_edit.text())
         except:
-            QMessageBox.information(self, "Input Error", "The client number must be a numeric value.") 
+            QMessageBox.information(self, "Input Error",
+                                    "The client number must be a numeric value.") 
             self.reset_display()
             return
      
         if client_number not in self.__client_listing.keys():
-            QMessageBox.information(self, "Not Found", f"Client number: {client_number} not found.") 
+            QMessageBox.information(self, "Not Found",
+                                    f"Client number: {client_number} not found.") 
             self.reset_display()
             return
         else:
-            self.client_info_label.setText(f"Client Name: {self.__client_listing[client_number].first_name} "
-                                           f"{self.__client_listing[client_number].last_name}")    
+            self.client_info_label.setText(f"Client Name: "
+                    f"{self.__client_listing[client_number].first_name} "
+                    f"{self.__client_listing[client_number].last_name}")    
                    
             for account in self.__accounts.items():
                 if account[1].client_number == client_number:              
                     row_position = self.account_table.rowCount()
                     self.account_table.insertRow(row_position)
                     
-                    account_number_item = QTableWidgetItem(str(account[1].account_number))
+                    account_number_item = \
+                        QTableWidgetItem(str(account[1].account_number))
                     account_number_item.setTextAlignment(Qt.AlignCenter)
                     
-                    balance_item = QTableWidgetItem(QTableWidgetItem(f"${account[1].balance:,.2f}"))
-                    balance_item.setTextAlignment(Qt.AlignRight)
+                    balance_item = \
+                        QTableWidgetItem(QTableWidgetItem(f"${account[1].balance:,.2f}"))
+                    balance_item.setTextAlignment(Qt.AlignRight | Qt.AlignCenter)
                     
-                    date_created_item = QTableWidgetItem(str(account[1]._date_created))
+                    date_created_item = \
+                        QTableWidgetItem(str(account[1]._date_created))
                     date_created_item.setTextAlignment(Qt.AlignCenter)
                     
                     account_item = QTableWidgetItem(account[1].__class__.__name__)
@@ -108,9 +114,11 @@ class ClientLookupWindow(LookupWindow):
                         account_window.exec()   
                                           
             elif selected_account not in self.__accounts.keys():
-                QMessageBox.information(self, "No Bank Account", "Bank Account selected does not exist.")       
+                QMessageBox.information(self, "No Bank Account", 
+                                "Bank Account selected does not exist.")       
         else:
-            QMessageBox.information(self, "Invalid Selection", "Please select a valid record.")
+            QMessageBox.information(self, "Invalid Selection", 
+                                    "Please select a valid record.")
             
     
     @Slot(BankAccount)
@@ -120,12 +128,18 @@ class ClientLookupWindow(LookupWindow):
         
         Args:
             account (BankAccount):
-                The account object containing the account number and updated balance.
+                The account object containing the account number and 
+                updated balance.
         
         """
         for row in range(self.account_table.rowCount()):
-            if int(self.account_table.item(row, 0).text()) == int(account.account_number):
-                self.account_table.setItem(row, 1, QTableWidgetItem(f"{account.balance:,.2f}"))                                 
+            if int(self.account_table.item(row, 0).text()) == \
+                    int(account.account_number):
+                        
+                balance_item = QTableWidgetItem(f"${account.balance:,.2f}")
+                
+                self.account_table.setItem(row, 1, balance_item)                                 
+                balance_item.setTextAlignment(Qt.AlignRight | Qt.AlignCenter)
                 
         self.__accounts[account.account_number] = account
         update_data(account)     

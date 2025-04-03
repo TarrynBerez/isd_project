@@ -10,7 +10,8 @@ import copy
 
 class AccountDetailsWindow(DetailsWindow):
     """
-    A class used to display account details and perform bank account transactions.
+    A class used to display account details and perform bank account
+    transactions.
     """
     balance_updated = Signal(BankAccount)
     
@@ -42,7 +43,8 @@ class AccountDetailsWindow(DetailsWindow):
         try:
             amount = float(self.transaction_amount_edit.text())
         except:
-            QMessageBox.information(self, "Invalid Data", "Amount must be numeric.")
+            QMessageBox.information(self, "Invalid Data",
+                            "Amount must be numeric.")
             self.transaction_amount_edit.setFocus()
             return
     
@@ -62,7 +64,8 @@ class AccountDetailsWindow(DetailsWindow):
             self.transaction_amount_edit.setFocus()
             
         except Exception as e:
-            QMessageBox.information(self, f"{transaction_type} Failed", str(e))
+            QMessageBox.information(self,
+                        f"{transaction_type} Failed", str(e))
             self.transaction_amount_edit.setText("")
             self.transaction_amount_edit.setFocus()
 

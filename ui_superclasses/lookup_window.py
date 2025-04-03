@@ -19,7 +19,8 @@ class LookupWindow(QMainWindow):
         """
         super().__init__()
 
-        COLUMN_HEADERS = ["Account Number", "Balance", "Date Created", "Account Type"]
+        COLUMN_HEADERS = ["Account Number", "Balance", 
+                          "Date Created", "Account Type"]
 
         self.setWindowTitle("Client Lookup")
         self.resize(600, 400) 

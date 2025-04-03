@@ -63,8 +63,10 @@ def load_data()->tuple[dict,dict]:
         reader = csv.DictReader(csvfile)
         try:
             for value in reader:
-                client_data = Client(int(value["client_number"]), str(value["first_name"]),
-                                str(value["last_name"]),     str(value["email_address"]))
+                client_data = Client(int(value["client_number"]), 
+                                     str(value["first_name"]),
+                                     str(value["last_name"]),     
+                                     str(value["email_address"]))
                 
                 client_listing[client_data.client_number] = client_data
                 
@@ -80,21 +82,35 @@ def load_data()->tuple[dict,dict]:
             try:  
                 date = datetime.strptime(value["date_created"], "%Y-%m-%d").date()
                 if str(value["account_type"]) == "ChequingAccount":
-                    account_data = ChequingAccount(int(value["account_number"]), int(value["client_number"]), float(value["balance"]),
-                                            date, float(value["overdraft_limit"]), float(value["overdraft_rate"]))
+                    account_data = \
+                        ChequingAccount(int(value["account_number"]), 
+                                        int(value["client_number"]), 
+                                        float(value["balance"]),
+                                        date, 
+                                        float(value["overdraft_limit"]), 
+                                        float(value["overdraft_rate"]))
                     
                 elif str(value["account_type"]) == "InvestmentAccount":
-                    account_data = InvestmentAccount(int(value["account_number"]), int(value["client_number"]), float(value["balance"]),
-                                            date, float(value["management_fee"]))
+                    account_data = \
+                        InvestmentAccount(int(value["account_number"]), 
+                                        int(value["client_number"]), 
+                                        float(value["balance"]),
+                                        date, float(value["management_fee"]))
                 
                 elif str(value["account_type"]) == "SavingsAccount":
-                    account_data = SavingsAccount(int(value["account_number"]),    int(value["client_number"]), 
-                                                  float(value["balance"]), date, float(value["minimum_balance"]))
+                    account_data = \
+                        SavingsAccount(int(value["account_number"]),    
+                                       int(value["client_number"]), 
+                                       float(value["balance"]), 
+                                       date, 
+                                       float(value["minimum_balance"]))
                 else:                 
                     raise ValueError("Not a valid account_type")
                     
                 if account_data.client_number not in client_listing.keys():
-                    logging.error(f"{str(account_data.client_number)} contains invalid Client Number {str(account_data.client_number)}")
+                    logging.error(f"{str(account_data.client_number)} "
+                                  f"contains invalid Client Number "
+                                  f"{str(account_data.client_number)}")
                 else:
                     accounts[account_data.account_number] = account_data
                 
