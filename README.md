@@ -15,7 +15,7 @@ only accessible in the class. Also methods like update_balance, deposit and with
 Assignment 1: We created a bank account and client class and incorperated encapsulation through the use of private attributes, public accessors and mutators.
 Assignment 2: In this assignment we used abstraction, inheritance and polymorphism to create a chequing, investment, and savings account.
 Assignment 3: We used strategy patterns to implement a system for calculating service charges and observers for notifying the account owner of any issues
-Assignment [assignment number]: [Indicate the name and description of the current assignment]
+Assignment 4: In this assignment we created a responsive application using pyside6 and event handling. 
 
 
 ## Polymorphism

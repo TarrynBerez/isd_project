@@ -42,6 +42,7 @@ class ClientLookupWindow(LookupWindow):
         except:
             QMessageBox.information(self, "Input Error", "The client number must be a numeric value.") 
             self.reset_display()
+            return
      
         if client_number not in self.__client_listing.keys():
             QMessageBox.information(self, "Not Found", f"Client number: {client_number} not found.") 
@@ -49,17 +50,29 @@ class ClientLookupWindow(LookupWindow):
             return
         else:
             self.client_info_label.setText(f"Client Name: {self.__client_listing[client_number].first_name} "
-              
-                                           f"{self.__client_listing[client_number].last_name}")           
+                                           f"{self.__client_listing[client_number].last_name}")    
+                   
             for account in self.__accounts.items():
-                if account[1].client_number == client_number: ##Trying to get it to pull client number from accounts                  
+                if account[1].client_number == client_number:              
                     row_position = self.account_table.rowCount()
                     self.account_table.insertRow(row_position)
                     
-                    self.account_table.setItem(row_position, 0, QTableWidgetItem(str(account[1].account_number)))
-                    self.account_table.setItem(row_position, 1, QTableWidgetItem(f"{account[1].balance:,.2f}"))
-                    self.account_table.setItem(row_position, 2, QTableWidgetItem(str(account[1]._date_created)))
-                    self.account_table.setItem(row_position, 3, QTableWidgetItem(account[1].__class__.__name__))
+                    account_number_item = QTableWidgetItem(str(account[1].account_number))
+                    account_number_item.setTextAlignment(Qt.AlignCenter)
+                    
+                    balance_item = QTableWidgetItem(QTableWidgetItem(f"${account[1].balance:,.2f}"))
+                    balance_item.setTextAlignment(Qt.AlignRight)
+                    
+                    date_created_item = QTableWidgetItem(str(account[1]._date_created))
+                    date_created_item.setTextAlignment(Qt.AlignCenter)
+                    
+                    account_item = QTableWidgetItem(account[1].__class__.__name__)
+                    account_item.setTextAlignment(Qt.AlignCenter)
+                    
+                    self.account_table.setItem(row_position, 0, account_number_item)
+                    self.account_table.setItem(row_position, 1, balance_item)
+                    self.account_table.setItem(row_position, 2, date_created_item)
+                    self.account_table.setItem(row_position, 3, account_item)
                     self.account_table.resizeColumnsToContents()
     
     @Slot()
