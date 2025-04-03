@@ -15,6 +15,7 @@ only accessible in the class. Also methods like update_balance, deposit and with
 Assignment 1: We created a bank account and client class and incorperated encapsulation through the use of private attributes, public accessors and mutators.
 Assignment 2: In this assignment we used abstraction, inheritance and polymorphism to create a chequing, investment, and savings account.
 Assignment 3: We used strategy patterns to implement a system for calculating service charges and observers for notifying the account owner of any issues
+Assignment 4: In this assignment we created a responsive application using pyside6 and event handling. 
 
 
 ## Polymorphism
@@ -24,3 +25,7 @@ subclass having unique implementation to the get_service_charges method and __ s
 
 ## Strategy Pattern
 The strategy pattern is being used to define different ways to calculate service charges for a BankAccount class.
+
+## Event-Driven Programming Paradigm
+Event driven programming is applied when the application uses signals, for example when a button is clicked it calls a method that performs the connected action.
+                
