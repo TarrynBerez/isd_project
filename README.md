@@ -29,3 +29,5 @@ The strategy pattern is being used to define different ways to calculate service
 ## Event-Driven Programming Paradigm
 Event driven programming is applied when the application uses signals, for example when a button is clicked it calls a method that performs the connected action.
                 
+## Filtering
+Filtering was incorporated by allowing the user to narrow down records within the account table, with things like account number, balance, and type.
