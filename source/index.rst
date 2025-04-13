@@ -35,7 +35,7 @@ documentation for details.
 .. automodule:: patterns.observer.observer
     :members:  
 
-.. automodule:: patterns.subject.subject 
+.. automodule:: patterns.observer.subject 
     :members:  
 
 
@@ -49,22 +49,6 @@ documentation for details.
     :members:  
 
 .. automodule:: patterns.strategy.service_charge_strategy
-    :members:  
-
-
-.. automodule:: tests.test_bank_account
-    :members:  
-
-.. automodule:: tests.test_chequing
-    :members:  
-
-.. automodule:: tests.test_client
-    :members:  
-
-.. automodule:: tests.test_investment_account
-    :members:  
-
-.. automodule:: tests.test_savings_account
     :members:  
 
 
