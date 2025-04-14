@@ -16,7 +16,7 @@ Assignment 1: We created a bank account and client class and incorperated encaps
 Assignment 2: In this assignment we used abstraction, inheritance and polymorphism to create a chequing, investment, and savings account.
 Assignment 3: We used strategy patterns to implement a system for calculating service charges and observers for notifying the account owner of any issues
 Assignment 4: In this assignment we created a responsive application using pyside6 and event handling. 
-
+Assignment 5: In this assignment we Learned how to use inno and sphinx to turn our programs into executables.
 
 ## Polymorphism
 Polymorphism was achieved in the subclasses by using the super init to initialize attributes inherited from the bank account class and each
@@ -29,3 +29,5 @@ The strategy pattern is being used to define different ways to calculate service
 ## Event-Driven Programming Paradigm
 Event driven programming is applied when the application uses signals, for example when a button is clicked it calls a method that performs the connected action.
                 
+## Filtering
+Filtering was incorporated by allowing the user to narrow down records within the account table, with things like account number, balance, and type.

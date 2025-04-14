@@ -12,6 +12,7 @@ class AccountDetailsWindow(DetailsWindow):
     """
     A class used to display account details and perform bank account
     transactions.
+    
     """
     balance_updated = Signal(BankAccount)
     
@@ -22,6 +23,7 @@ class AccountDetailsWindow(DetailsWindow):
             account: The bank account to be displayed.
         Returns:
             None
+            
         """
         super().__init__()
         
@@ -40,6 +42,10 @@ class AccountDetailsWindow(DetailsWindow):
 
     @Slot()
     def __on_apply_transaction(self):
+        """
+        Handles transactions of a specified amount.
+        
+        """
         try:
             amount = float(self.transaction_amount_edit.text())
         except:
@@ -73,4 +79,8 @@ class AccountDetailsWindow(DetailsWindow):
         
     @Slot()
     def __on_exit(self):
+        """
+        Closes the window when the exit button is clicked.
+        
+        """
         self.close()
